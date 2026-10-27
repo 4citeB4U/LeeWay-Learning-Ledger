@@ -20,9 +20,10 @@ A conversation at 4 a.m. means *interaction observed at 4 a.m.*; it does **not**
 
 ## Initial modules
 
-- `src/experience-vault.mjs`: encrypted, owner-scoped candidate journal with hash-chain integrity, explicit initialization, fsync, writer lock, duplicate event rejection and exact readback. Requires caller-owned 32-byte key and capture consent.
-- `src/experience-projection.mjs`: deterministic, read-only tentative interaction windows and explicit-preference projections; correction-aware, no sleep/mood inference or proactive authorization.
-- `test/experience.test.mjs`: fictitious/ephemeral-key regression tests.
+- `src/experience-vault.mjs`: encrypted, owner-scoped candidate journal with hash-chain integrity, explicit initialization, fsync, writer lock, duplicate event rejection and exact readback. Requires caller-owned 32-byte key; captures experience arcs (goal, environment, expectation, observation, friction, recovery, uncertainty) and consent-change events without promoting their claims.
+- `src/experience-projection.mjs`: deterministic, read-only tentative interaction windows, candidate experience arcs and explicit-preference projections; requires matching owner and separate personalization permission; revocation removes previous data from active projections; no sleep/mood inference or proactive authorization.
+- `src/university-handoff.mjs`: source-only private University/Agent Skills candidate-context adapter requiring an independent expected journal head and an externally supplied owner-access decision. No production authorization or admission is implied.
+- `test/experience.test.mjs` and `test/university-handoff.test.mjs`: fictional, ephemeral-key regression tests.
 - `docs/ARCHITECTURE.md`: boundary, University contract, privacy, resilience and missing production gates.
 
 Run `npm test` with Node 22 or newer (no npm dependencies).
