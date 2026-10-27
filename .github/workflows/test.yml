@@ -13,3 +13,5 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+      - name: Verify canonical engineering loop documentation
+        run: npm run verify:engineering-loop
