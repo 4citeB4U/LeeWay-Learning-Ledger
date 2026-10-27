@@ -1,0 +1,172 @@
+{
+  "schema": "leeway.engineering.loop.checkpoint.v1",
+  "checkpointId": "C3-LEARNING-CUSTODY-SOURCE-20261027",
+  "task": "Read-only C3 historical Learning Ledger custody gate and false-admission refusal",
+  "parentMission": {
+    "owner": "4citeB4U/Leeway-Runtime-Fabric",
+    "url": "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21",
+    "acceptance": "C3 SAME_REQUEST_VERITAS_RECEIPT_LEARNING_ADMISSION"
+  },
+  "source": {
+    "owner": "4citeB4U/LeeWay-Learning-Ledger",
+    "branch": "feat/experiential-growth-foundation-v1",
+    "reviewPr": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1",
+    "reviewedCommit": "3c83045d51ea7592f37623971fa412aa58918ba8",
+    "scope": "SOURCE_ONLY"
+  },
+  "authority": {
+    "engineeringLaw": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md",
+    "permanentRules": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/standards/PERMANENT-ENGINEERING-RULES.md",
+    "contributorProtocol": "https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/docs/CONTRIBUTOR-HANDOFF-PROTOCOL.md"
+  },
+  "classification": "MISSING_GLUE",
+  "acceptance": {
+    "source": {
+      "status": "CI_PASS",
+      "workflowRun": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40590756411",
+      "testsPass": 20,
+      "testsFail": 0,
+      "testsSkipped": 0
+    },
+    "deployment": "NOT_DEPLOYED",
+    "liveOwnerHost": "NOT_OBSERVED",
+    "veritas": "NOT_OBSERVED",
+    "canonicalReceipt": "NOT_CREATED",
+    "canonicalLearning": "NOT_ADMITTED",
+    "production": "BLOCKED"
+  },
+  "scopeAndSafeguards": {
+    "preserved": [
+      "Existing Runtime Fabric Learning Ledger reader and historical proof",
+      "Canonical Receipt Ledger writer and Veritas authorities",
+      "Production provider registry",
+      "Private owner runtime data"
+    ],
+    "changed": [
+      "src/c3-historical-custody.mjs",
+      "scripts/c3-custody-preflight.mjs",
+      "test/c3-historical-custody.test.mjs",
+      "docs/C3-HISTORICAL-CUSTODY-GATE.md"
+    ],
+    "rollback": "Draft PR remains unmerged; retain main unchanged; source changes reversible by reviewed branch revert. Owner-host rollback NOT TESTED because no deployed host changes.",
+    "exactBlocker": "Owner-local E: ledger, production Receipt Ledger 127.0.0.1:4104 and independent Veritas authority are inaccessible in this GitHub source session."
+  },
+  "loop": [
+    {
+      "phase": "Investigate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Read LeeWay Laws, active Runtime Fabric reader, canonical receipt-vs-learning distinction and current PR.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/blob/main/scripts/existing-learning-ledger-readback.mjs"
+      ]
+    },
+    {
+      "phase": "Diagnose",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Historical 133/134 records are evidence of an older host-scoped prefix check, not current admission; missing direct historical preflight and prior false-production-admission risk.",
+      "evidence": [
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/blob/main/docs/C3-CANONICAL-RECEIPT-AND-LEARNING-TRUTH-20261023.md",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1"
+      ]
+    },
+    {
+      "phase": "Plan",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Reuse existing read-only reader with source pin; leave local protected writers and production provider enrollment untouched.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/blob/feat/experiential-growth-foundation-v1/docs/C3-HISTORICAL-CUSTODY-GATE.md"
+      ]
+    },
+    {
+      "phase": "Implement",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Committed reader wrapper, manual preflight CLI, regression tests and source custody runbook in existing draft PR.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/92eb91cbdff02c3f7997d8e9084c773a4b13ddf4",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1"
+      ]
+    },
+    {
+      "phase": "Test",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Ran GitHub Actions source suite; previously recorded 20 tests passed, no failures or skips. Fixtures do not prove owner host.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40590624508"
+      ]
+    },
+    {
+      "phase": "Validate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Matched scope to Standards: source-only reader is not signed Veritas, no request admission and no production receipt; checked source pins and bounds.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/blob/feat/experiential-growth-foundation-v1/docs/C3-HISTORICAL-CUSTODY-GATE.md"
+      ]
+    },
+    {
+      "phase": "Repair",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Tightened rejection of forged promotion fields and checked source bytes again after reader execution.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/8d5ff10ec2a2244dfd8f86dcf1de36898e07d453"
+      ]
+    },
+    {
+      "phase": "Retest",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Re-ran the suite after repair, including forged flag rejection and regular-source constraints.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40590756411"
+      ]
+    },
+    {
+      "phase": "Verify",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Observed GitHub Actions completed successfully at source commit 3c83045; 20 passed, no source-level failures. No live owner-host readback was executed.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/3c83045d51ea7592f37623971fa412aa58918ba8",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40590756411"
+      ]
+    },
+    {
+      "phase": "Evidence",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Preserved source patch and CI proof in owning draft PR with explicit historical-only claim, production BLOCKED and next owner-host gate. This checkpoint is an indexed candidate, not an official receipt.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/blob/feat/experiential-growth-foundation-v1/docs/C3-HISTORICAL-CUSTODY-GATE.md"
+      ]
+    }
+  ],
+  "learningCandidate": {
+    "kind": "ENGINEERING_EXPERIENCE_CANDIDATE",
+    "truthBoundary": "SOURCE_ONLY_NOT_CANONICAL_LEARNING",
+    "finding": "A successful source check without traceable stages and an independent acceptance boundary can be mistaken for completed production admission.",
+    "recoveryPattern": "Require the ten-stage evidence chain and preserve exact nonproduction verification states; reconfirm owner-host, Veritas, canonical Receipt and Learning Ledger gates.",
+    "transferableTo": [
+      "Agent University review index",
+      "Agent Skills engineering and completion discipline"
+    ],
+    "promoteAutomatically": false,
+    "privacy": "PUBLIC_NON_PERSONAL_SOURCE_EVIDENCE_ONLY",
+    "contradictionHandling": "Retain later corrections and new independent evidence without overwriting historic failures."
+  },
+  "blockers": [
+    {
+      "code": "OWNER_HOST_LEDGER_UNREAD",
+      "owner": "owner-host-runtime",
+      "next": "Run pinned read-only preflight on original owner Windows device"
+    },
+    {
+      "code": "INDEPENDENT_VERITAS_NOT_PROVEN",
+      "owner": "Runtime Fabric / Veritas",
+      "next": "Qualify scoped PRE and POST issuer binding and signed exact-request evidence"
+    },
+    {
+      "code": "RECEIPT_AND_LEARNING_NOT_ADMITTED",
+      "owner": "canonical Runtime Fabric authorities",
+      "next": "Prove actual request execution, receipt append/readback and exact learning admission"
+    }
+  ]
+}
