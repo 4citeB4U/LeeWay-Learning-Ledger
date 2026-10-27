@@ -45,11 +45,7 @@ test('historical readback rejects candidate PASS, forged proof, wrong scope and 
     {canonicalLearningAdmitted:true},
   ]){
     const f={...fixture(),...changed};
-    if('canonicalLearningAdmitted' in changed) {
-      // A forged promotion flag must never confer permission, even with a valid readback.
-      const out=q(f,{readerSha256:reader,expectedReaderSha256:reader,testOnly:true});
-      assert.equal(out.canonicalLearningAdmitted,false);
-    } else assert.equal(q(f,{readerSha256:reader,expectedReaderSha256:reader,testOnly:true}).status,'BLOCKED');
+    assert.equal(q(f,{readerSha256:reader,expectedReaderSha256:reader,testOnly:true}).status,'BLOCKED');
   }
 });
 test('absolute reader source path is required; missing and substituted modules fail before import',async()=>{
