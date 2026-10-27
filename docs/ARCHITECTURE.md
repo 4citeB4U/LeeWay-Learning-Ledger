@@ -24,6 +24,12 @@ Not knowing is a first-class state. `UNKNOWN`, `TENTATIVE`, `CONTRADICTED`, `USE
 
 ## University consumers
 
+The source-only `prepareUniversityCandidateContext` adapter reads an explicitly initialized `LocalExperienceVault` by requiring an external journal-head anchor, a consumer identity and an owner-scoped `authorizeRead` callback. The callback is **not** a proof of production identity: qualified Memory Harness and Security Harness bindings remain mandatory before live use. The output is `CANDIDATE_CONTEXT_ONLY`, never `ADMITTED_VERIFIED`. If personalization has been revoked, no candidate context is returned.
+
+`EXPERIENCE_ARC` events preserve goal, environment, expectation, actual observation, friction, attempted recovery, outcome and a source-linked lesson hypothesis. Evidence states are limited to `OBSERVED`, `INFERRED` or `UNVERIFIED`; a client cannot label the candidate itself as Veritas-verified. A real PASS or FAIL remains external canonical execution evidence.
+
+`PERSONALIZATION_CONTROL` is recorded as an owner-scoped privacy event. A disabling event suppresses existing profile projections; explicit re-enabling begins a fresh evidence epoch. Collection consent and use authorization remain separate. An actual data-erasure/export workflow is **not implemented** in this source-only candidate.
+
 Expose stable read-only projection interfaces for Agent University, Agent Skills, Digital Brain and Machine Consciousness. All outputs need classification, source event IDs, evidence scope, timestamps and freshness; RAG retrieval must not turn a hypothesis into user fact. Shared learning is permitted only for appropriately de-identified, owner-authorized transferable procedural patterns, not cross-user personal habits.
 
 ## Resilience and recovery
