@@ -1,0 +1,9 @@
+{
+  "name": "@leeway/experiential-candidates",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {"test": "node --test"},
+  "description": "A non-production, owner-scoped experiential candidate vault for LeeWay Learning Ledger"
+}
