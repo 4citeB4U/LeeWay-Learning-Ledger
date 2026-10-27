@@ -18,7 +18,9 @@ function make() {
   const folder = tmp();
   const filePath = path.join(folder, 'private-events.jsonl');
   const key = randomBytes(32);
-  return {folder, filePath, key, vault: new LocalExperienceVault({filePath, ownerId: 'fictional-owner', key})};
+  const vault = new LocalExperienceVault({filePath, ownerId: 'fictional-owner', key});
+  vault.initialize();
+  return {folder, filePath, key, vault};
 }
 
 test('encrypted, append/readback, restart and idempotent replay', () => {
@@ -96,4 +98,18 @@ test('operational candidate never implies Veritas PASS or canonical learning adm
   const event = specimen('op-1', '2026-10-01T11:00:00Z','OPERATIONAL_OBSERVATION',
     {requestId:'fictional-request', outcome:'FAIL',receiptSha256:null});
   assert.equal(projectExperience([event],{timeZone:'UTC'}).canonicalLearningAdmitted,false);
+});
+
+
+test('disappeared journal and mismatched external head never become a new empty history', () => {
+  const {folder,filePath,vault} = make();
+  try {
+    const {head} = vault.append(specimen('needs-recovery'));
+    assert.equal(vault.read({expectedHead:head}).events.length, 1);
+    assert.throws(() => vault.read({expectedHead:'f'.repeat(64)}), /VAULT_ANCHOR_MISMATCH/);
+    fs.unlinkSync(filePath);
+    assert.throws(() => vault.read(), /VAULT_MISSING_RECONCILE_REQUIRED/);
+    assert.throws(() => vault.append(specimen('should-not-recreate')), /VAULT_MISSING_RECONCILE_REQUIRED/);
+    assert.equal(fs.existsSync(filePath), false);
+  } finally {fs.rmSync(folder,{recursive:true,force:true});}
 });

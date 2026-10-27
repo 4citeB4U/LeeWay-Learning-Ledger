@@ -119,13 +119,23 @@ export class LocalExperienceVault {
     this.ownerId = ownerId;
     this.key = Buffer.from(key);
   }
-  read() {
+  /** Explicit one-time initialization: missing vault files never silently mean empty history. */
+  initialize() {
+    fs.mkdirSync(path.dirname(this.filePath), {recursive: true, mode: 0o700});
+    const fd = fs.openSync(this.filePath, 'wx', 0o600);
+    try { fs.fsyncSync(fd); }
+    finally { fs.closeSync(fd); }
+    return {status: 'VAULT_INITIALIZED_EMPTY'};
+  }
+  read({expectedHead} = {}) {
     try {
       const stat = fs.lstatSync(this.filePath);
       if (!stat.isFile() || stat.isSymbolicLink()) fail('VAULT_SOURCE_INVALID');
-      return decodeChain(fs.readFileSync(this.filePath, 'utf8'), this.key, this.ownerId);
+      const result = decodeChain(fs.readFileSync(this.filePath, 'utf8'), this.key, this.ownerId);
+      if (expectedHead !== undefined && result.head !== expectedHead) fail('VAULT_ANCHOR_MISMATCH');
+      return result;
     } catch (error) {
-      if (error.code === 'ENOENT') return {events: [], head: GENESIS};
+      if (error.code === 'ENOENT') fail('VAULT_MISSING_RECONCILE_REQUIRED');
       throw error;
     }
   }

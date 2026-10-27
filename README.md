@@ -20,7 +20,7 @@ A conversation at 4 a.m. means *interaction observed at 4 a.m.*; it does **not**
 
 ## Initial modules
 
-- `src/experience-vault.mjs`: encrypted, owner-scoped candidate journal with hash-chain integrity, fsync, writer lock, duplicate event rejection and exact readback. Requires caller-owned 32-byte key and capture consent.
+- `src/experience-vault.mjs`: encrypted, owner-scoped candidate journal with hash-chain integrity, explicit initialization, fsync, writer lock, duplicate event rejection and exact readback. Requires caller-owned 32-byte key and capture consent.
 - `src/experience-projection.mjs`: deterministic, read-only tentative interaction windows and explicit-preference projections; correction-aware, no sleep/mood inference or proactive authorization.
 - `test/experience.test.mjs`: fictitious/ephemeral-key regression tests.
 - `docs/ARCHITECTURE.md`: boundary, University contract, privacy, resilience and missing production gates.
@@ -31,7 +31,7 @@ Run `npm test` with Node 22 or newer (no npm dependencies).
 
 **NEVER commit real conversation transcripts, personal preference records, sleep hypotheses, audio, identity profiles, encrypted private journals, vault keys, access tokens, or production receipts.** Personal runtime data must remain in authorized private owner storage with a real key manager and revocation/deletion workflow. The example vault provides confidentiality and local integrity checks, not a complete multi-device backup or production key-management system.
 
-A locked or corrupted journal fails closed. No automatic lock deletion, history rewriting, production provider registration, or simulated Veritas proof is allowed. Dormant or outdated lessons remain indexed with provenance; correcting a projection does not alter the original observation.
+A missing, locked or corrupted journal fails closed. Vault creation requires explicit `vault.initialize()`, and callers may supply an expected external head hash on readback. No automatic lock deletion, history rewriting, production provider registration, or simulated Veritas proof is allowed. Dormant or outdated lessons remain indexed with provenance; correcting a projection does not alter the original observation.
 
 ## Development status
 

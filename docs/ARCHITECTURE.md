@@ -28,7 +28,7 @@ Expose stable read-only projection interfaces for Agent University, Agent Skills
 
 ## Resilience and recovery
 
-Candidate journal uses AES-256-GCM and hash-chain verification with fsynced append; exclusive `.lock` prevents concurrent writers while the lock exists. It does not automatically clear stale locks or incomplete tails. Post-crash uncertainty requires an authorized reconciliation path, not blind cleanup. Multi-host replication, key rotation, secure erasure, backup/restore and disk-full testing are future gates.
+Candidate journal requires explicit empty initialization; a missing file is BLOCKED, never silently interpreted as new history. Callers may bind readback to an independently retained `expectedHead`; an anchor mismatch is BLOCKED. Candidate journal uses AES-256-GCM and hash-chain verification with fsynced append; exclusive `.lock` prevents concurrent writers while the lock exists. It does not automatically clear stale locks or incomplete tails. Post-crash uncertainty requires an authorized reconciliation path, not blind cleanup. Multi-host replication, key rotation, secure erasure, backup/restore and disk-full testing are future gates.
 
 ## Admission and next gate
 
