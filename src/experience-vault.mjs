@@ -23,7 +23,9 @@ const KIND_TO_SCOPE = Object.freeze({
   EXPLICIT_PREFERENCE: 'preferences',
   CORRECTION: 'preferences',
   FEEDBACK: 'preferences',
-  OPERATIONAL_OBSERVATION: 'operational'
+  OPERATIONAL_OBSERVATION: 'operational',
+  EXPERIENCE_ARC: 'experience',
+  PERSONALIZATION_CONTROL: 'privacy'
 });
 const SAFE_PREFERENCE_DIMENSIONS = new Set([
   'briefing_window', 'communication_style', 'activity', 'food', 'movie', 'notification'
@@ -45,7 +47,9 @@ export function validateCandidate(candidate, ownerId) {
   if (!IDENTIFIER.test(candidate.eventId) || candidate.ownerId !== ownerId || !IDENTIFIER.test(candidate.agentId)) fail('CANDIDATE_IDENTITY_INVALID');
   if (!(candidate.kind in KIND_TO_SCOPE) || candidate.scope !== KIND_TO_SCOPE[candidate.kind]) fail('CANDIDATE_SCOPE_INVALID');
   if (!validDate(candidate.occurredAt) || !validZone(candidate.timeZone)) fail('CANDIDATE_TIME_INVALID');
-  if (candidate.consent !== true) fail('CAPTURE_CONSENT_REQUIRED');
+  if (candidate.kind === 'PERSONALIZATION_CONTROL') {
+    if (typeof candidate.consent !== 'boolean') fail('PRIVACY_CONTROL_CONSENT_INVALID');
+  } else if (candidate.consent !== true) fail('CAPTURE_CONSENT_REQUIRED');
   const d = candidate.data;
   if (!isObject(d)) fail('CANDIDATE_DATA_INVALID');
   if (candidate.kind === 'INTERACTION') {
@@ -63,6 +67,20 @@ export function validateCandidate(candidate, ownerId) {
     if (!exactKeys(d, ['requestId', 'outcome', 'receiptSha256']) || !IDENTIFIER.test(d.requestId) ||
       !['PASS', 'FAIL', 'BLOCKED', 'UNVERIFIED'].includes(d.outcome) ||
       !(d.receiptSha256 === null || HASH.test(d.receiptSha256))) fail('OPERATIONAL_DATA_INVALID');
+  } else if (candidate.kind === 'EXPERIENCE_ARC') {
+    const required = ['goal', 'environment', 'expectation', 'observation', 'friction', 'recovery',
+      'outcome', 'lessonHypothesis', 'evidenceState', 'sourceEventIds'];
+    const bounded = x => typeof x === 'string' && x.trim().length > 0 && x.length <= 300;
+    if (!exactKeys(d, required) || !['SUCCESS', 'FAILURE', 'PARTIAL', 'UNKNOWN'].includes(d.outcome) ||
+        !['OBSERVED', 'INFERRED', 'UNVERIFIED'].includes(d.evidenceState) ||
+        ![d.goal, d.environment, d.expectation, d.observation, d.lessonHypothesis].every(bounded) ||
+        ![d.friction, d.recovery].every(x => x === null || bounded(x)) ||
+        !Array.isArray(d.sourceEventIds) || d.sourceEventIds.length < 1 || d.sourceEventIds.length > 16 ||
+        !d.sourceEventIds.every(x => typeof x === 'string' && IDENTIFIER.test(x)) ||
+        new Set(d.sourceEventIds).size !== d.sourceEventIds.length) fail('EXPERIENCE_ARC_INVALID');
+  } else if (candidate.kind === 'PERSONALIZATION_CONTROL') {
+    if (!exactKeys(d, ['enabled']) || typeof d.enabled !== 'boolean' ||
+        (d.enabled && candidate.consent !== true)) fail('PERSONALIZATION_CONTROL_INVALID');
   }
   return true;
 }
