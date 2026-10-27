@@ -70,7 +70,10 @@ export function qualifyHistoricalCustodyObservation(observation,{
     !HEX.test(observation.currentLedgerSha256??'')||
     observation.productionWritePerformed!==false||
     observation.gpuAdmissionAuthorized!==false||
-    observation.independentProductionCertificate!==false)
+    observation.independentProductionCertificate!==false||
+    observation.canonicalLearningAdmitted===true||
+    observation.productionAdmissionAuthorized===true||
+    observation.durableReadbackVerified===true)
     return deny('HISTORICAL_CUSTODY_OBSERVATION_NOT_QUALIFIED');
   return {
     status:testOnly?'TEST_FIXTURE_ONLY':'SCOPED_HISTORICAL_CUSTODY_OBSERVED',
@@ -112,5 +115,11 @@ export async function inspectPinnedHistoricalC3Custody({
       return deny('CANONICAL_READBACK_EXPORT_MISSING');
     actual=module.inspectExistingLearningLedger(proofPath===undefined?{}:{proofPath,configPath});
   } catch {return deny('ORIGINAL_READER_EXECUTION_BLOCKED');}
+  // Detect ordinary source changes between the pinned read and the reader invocation.
+  // This is a scoped source check, not an operating-system immutable-file guarantee.
+  try {
+    if(sha(qualifiedRegularFile(readerPath))!==digest)
+      return deny('READER_SOURCE_CHANGED_DURING_READBACK');
+  } catch{return deny('READER_SOURCE_CHANGED_DURING_READBACK');}
   return qualifyHistoricalCustodyObservation(actual,{readerSha256:digest,expectedReaderSha256});
 }
