@@ -16,15 +16,32 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {assessEngineeringCheckpoint} from '../src/engineering-loop-evidence.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const location=path.join(root,'docs','checkpoints','C3-LEARNING-CUSTODY-SOURCE-20261027.json');
-let assessed;
+const directory=path.join(root,'docs','checkpoints');
+let result;
 try {
-  const st=fs.lstatSync(location);
-  if(!st.isFile()||st.isSymbolicLink())throw Error('CHECKPOINT_NOT_REGULAR_FILE');
-  assessed=assessEngineeringCheckpoint(JSON.parse(fs.readFileSync(location,'utf8')));
+  const files=fs.readdirSync(directory).filter(file=>/^[A-Z0-9-]+\.json$/.test(file)).sort();
+  if(!files.length)throw Error('NO_ENGINEERING_CHECKPOINTS');
+  const observed=[];
+  for(const file of files){
+    const location=path.join(directory,file);
+    const st=fs.lstatSync(location);
+    if(!st.isFile()||st.isSymbolicLink())throw Error('CHECKPOINT_NOT_REGULAR_FILE:'+file);
+    const checkpoint=JSON.parse(fs.readFileSync(location,'utf8'));
+    const reviewed=assessEngineeringCheckpoint(checkpoint);
+    if(reviewed.status!=='SOURCE_LOOP_DOCUMENTED')
+      throw Error('CHECKPOINT_NOT_DOCUMENTED:'+file+':'+reviewed.errors.join(','));
+    if(observed.some(x=>x.checkpointId===reviewed.checkpointId))
+      throw Error('DUPLICATE_ENGINEERING_CHECKPOINT_ID');
+    observed.push({file,checkpointId:reviewed.checkpointId,phaseCount:reviewed.phaseCount,
+      status:reviewed.status,productionAdmissionAuthorized:false,
+      canonicalLearningAdmitted:false});
+  }
+  result={status:'SOURCE_LOOP_DOCUMENTED',checkpointCount:observed.length,
+    checkpoints:observed,canonicalLearningAdmitted:false,
+    productionAdmissionAuthorized:false,externalVeritasReceiptAuthenticated:false};
 } catch(error) {
-  assessed={status:'BLOCKED_DOCUMENTATION',errors:[error.message],
+  result={status:'BLOCKED_DOCUMENTATION',errors:[error.message],
     canonicalLearningAdmitted:false,productionAdmissionAuthorized:false};
 }
-process.stdout.write(JSON.stringify(assessed,null,2)+'\n');
-if(assessed.status!=='SOURCE_LOOP_DOCUMENTED')process.exitCode=1;
+process.stdout.write(JSON.stringify(result,null,2)+'\\n');
+if(result.status!=='SOURCE_LOOP_DOCUMENTED')process.exitCode=1;
