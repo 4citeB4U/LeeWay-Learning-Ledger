@@ -48,7 +48,7 @@ The latter reports `SOURCE_LOOP_DOCUMENTED` only when ten stages, source referen
 4. **CANONICAL_RECEIPT + LEARNING:** Existing Receipt Ledger writer/readback then qualified Learning Ledger writer/readback admit the real same-request outcome. Only independently eligible evidence may promote institutional capability, skill mastery, or task completion.
 5. **CONTINUITY:** Once qualified, index the lesson in the existing University/Skills authority and carry supersession, contradiction, source version and regression scope. Never erase a verified failure by rewriting history.
 
-Each subsequent change requires **its own new checkpoint/updated evidence**. Do not reuse this 2026-10-27 source-only test count to certify a later commit, runtime provider, device or request. The repository's checkpoint checker currently exercises one bounded C3 source event; it is **not yet a cross-repository production gate**.
+Each subsequent change requires **its own new checkpoint/updated evidence**. Do not reuse this 2026-10-27 source-only test count to certify a later commit, runtime provider, device or request. The repository's checkpoint checker scans every JSON checkpoint in `docs/checkpoints/` (currently two separate C3 source experiences), retaining their distinct evidence and source commits; it is **not yet a cross-repository production gate**. Real admission delegates to the existing [Standards PR #24 checkpoint evaluator](https://github.com/4citeB4U/LeeWay-Standards/pull/24), through the bounded [Standards handoff](STANDARDS-ENGINEERING-HANDOFF.md), once that upstream draft and its authenticated runtime binding are qualified.
 
 ## Explicit unresolved acceptance (not silently closed)
 
