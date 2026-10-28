@@ -37,3 +37,13 @@ A missing, locked or corrupted journal fails closed. Vault creation requires exp
 ## Development status
 
 `SOURCE_IMPLEMENTED / LOCAL_TESTS_REQUIRED / PRODUCTION_UNVERIFIED`. GitHub CI is a source-level regression gate, not operational admission. No protected local host ledger has been read or modified by this repository initialization.
+
+## C3 canonical Learning ingress and University projection — stacked source review
+
+[Draft PR #3](https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3), stacked on the original experiential candidate PR #1, adds **source-only** contracts around the EXISTING canonical Learning Ledger provider:
+
+- `src/canonical-learning-inbox.mjs`: takes a **committed receipt-owned** outbox obligation, rechecks the original Receipt Authority's atomic commit and independently qualified Veritas outcome, refuses mismatched issuer roles, and asks the original canonical Learning writer to perform unique-key admission and durable readback. Existing errors become `BLOCKED`, `DISPUTED` or `PENDING_RECONCILIATION`, never invented production success. A bounded delivery scanner does not mutate Receipt Authority acknowledgments or cursors.
+- `src/institutional-readonly-projection.mjs`: retrieves only authenticated, nonpersonal, verified record identifiers and coded technical patterns for authorized University/Agent Skills readers. Raw prompts, interaction rhythms and private preferences never enter the projection; it has no skills, tool or permission mutation path.
+- Synthetic Node source tests cover receipt/Veritas/Formula correlation, independent provider roles, private-record refusal, concurrent duplicates, failure/denial learning, lost acknowledgments, restarts and query failures. They do **not** exercise production credentials or the original canonical writer on the owner's host.
+
+**Unresolved production dependencies:** Original Receipt Authority must implement the atomic receipt/outbox obligation and durable ACK; the original canonical Learning writer must enforce multi-process unique admission keys; actual independent Veritas and Receipt issuer bindings, live owner-host readback, crash/backup testing and qualified University access remain unverified. [Full contract and live acceptance checklist](docs/C3-CANONICAL-LEARNING-PRODUCTION-INGRESS-20261027.md). Do not confuse draft-source readiness with production certification.
