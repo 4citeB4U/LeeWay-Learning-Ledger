@@ -232,3 +232,51 @@ export function inspectLearningIngressRequirements({receiptOutbox,veritas,canoni
   canonicalLearningAdmitted:false,productionAdmissionAuthorized:false,
   mutationPerformed:false};
 }
+
+/**
+ * Receipt-owned outbox discovery. The consumer never deletes an obligation,
+ * moves the issuer's durable cursor, or acknowledges delivery on its own.
+ * Items are independently reconciled, so one disputed item need not block
+ * unrelated admitted items. The original receipt owner retains the ACK duty.
+ */
+export async function drainCommittedLearningObligations({
+ receiptAuthority,independentVeritas,canonicalLedger,
+ scope=INSTITUTIONAL_SCOPE,limit=10
+}={}){
+ if(scope!==INSTITUTIONAL_SCOPE||!Number.isInteger(limit)||limit<1||limit>50)
+  return blocked('DELIVERY_BATCH_SCOPE_OR_LIMIT_INVALID');
+ if(!receiptAuthority||typeof receiptAuthority.listPendingObligationIds!=='function')
+  return blocked('RECEIPT_OWNED_OUTBOX_DISCOVERY_UNBOUND');
+ if(typeof receiptAuthority.verifyBinding!=='function')
+  return blocked('RECEIPT_OUTBOX_PROVIDER_UNQUALIFIED');
+ let binding;
+ try{binding=await receiptAuthority.verifyBinding({
+   role:'CANONICAL_RECEIPT_OUTBOX_READER',scope,readOnly:true});}
+ catch{return pending('RECEIPT_OUTBOX_BINDING_UNAVAILABLE');}
+ if(binding?.status!=='QUALIFIED'||
+    binding.role!=='CANONICAL_RECEIPT_OUTBOX_READER'||
+    binding.scope!==scope||binding.independentlyAuthenticated!==true||
+    !ID.test(binding.providerId||''))
+  return blocked('RECEIPT_OUTBOX_PROVIDER_UNQUALIFIED');
+ let ids;
+ try{ids=await receiptAuthority.listPendingObligationIds({
+   scope,limit,readOnly:true});}
+ catch{return pending('RECEIPT_OUTBOX_PENDING_INDEX_UNAVAILABLE');}
+ if(!Array.isArray(ids)||ids.length>limit||
+    ids.some(x=>!ID.test(x||''))||new Set(ids).size!==ids.length)
+  return blocked('RECEIPT_OUTBOX_PENDING_INDEX_INVALID');
+ const results=[];
+ for(const obligationId of ids){
+   const decision=await reconcileLearningObligation({
+     obligationId,receiptAuthority,independentVeritas,canonicalLedger,scope});
+   results.push({obligationId,status:decision.status,reason:decision.reason,
+     recordId:decision.recordId||null,admissionKey:decision.admissionKey||null});
+ }
+ return {status:'SOURCE_DELIVERY_BATCH_EVALUATED',
+   inspected:ids.length,admitted:results.filter(x=>x.status==='ADMITTED_VERIFIED').length,
+   disputed:results.filter(x=>x.status==='DISPUTED').length,
+   held:results.filter(x=>x.status==='BLOCKED'||x.status==='PENDING_RECONCILIATION').length,
+   results,
+   receiptOutboxAcknowledged:false,receiptOutboxCursorAdvanced:false,
+   productionAdmissionAuthorized:false,skillPromotionAuthorized:false};
+}
