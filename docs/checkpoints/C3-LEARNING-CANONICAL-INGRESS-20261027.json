@@ -1,0 +1,188 @@
+{
+  "schema": "leeway.engineering.loop.checkpoint.v1",
+  "checkpointId": "C3-LEARNING-CANONICAL-INGRESS-20261027",
+  "task": "Build production-boundary Learning Ledger receipt-outbox consumer and read-only institutional retrieval without duplicating the canonical writer",
+  "parentMission": {
+    "owner": "4citeB4U/Leeway-Runtime-Fabric",
+    "url": "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21",
+    "acceptance": "C3_SAME_REQUEST_VERITAS_RECEIPT_ATOMIC_OUTBOX_LEARNING_READBACK"
+  },
+  "source": {
+    "owner": "4citeB4U/LeeWay-Learning-Ledger",
+    "branch": "review/c3-canonical-learning-inbox-recovery-20261027",
+    "reviewPr": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+    "reviewedCommit": "ffb0b18f6115438bbc5447b728bc8ac6b311960d",
+    "scope": "SOURCE_ONLY"
+  },
+  "authority": {
+    "engineeringLaw": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md",
+    "permanentRules": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/standards/PERMANENT-ENGINEERING-RULES.md",
+    "contributorProtocol": "https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/docs/CONTRIBUTOR-HANDOFF-PROTOCOL.md"
+  },
+  "classification": "MISSING_GLUE",
+  "acceptance": {
+    "source": {
+      "status": "CI_PASS",
+      "workflowRun": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40628327826",
+      "testsPass": 81,
+      "testsFail": 0,
+      "testsSkipped": 0
+    },
+    "deployment": "NOT_DEPLOYED",
+    "liveOwnerHost": "NOT_OBSERVED",
+    "veritas": "NOT_OBSERVED",
+    "canonicalReceipt": "NOT_CREATED",
+    "canonicalLearning": "NOT_ADMITTED",
+    "production": "BLOCKED"
+  },
+  "scopeAndSafeguards": {
+    "preserved": [
+      "Existing canonical Receipt Authority original append-only writer and historical immutable chain",
+      "Existing original GPU-specific Learning Ledger writer scripts/c3-learning-ledger-admission.mjs",
+      "Independent Veritas external production signer and Standard authority",
+      "Original owner-scoped private encrypted experience journal, prior 2 engineering checkpoints, original C3 mission"
+    ],
+    "changed": [
+      "src/canonical-learning-inbox.mjs",
+      "test/canonical-learning-inbox.test.mjs",
+      "src/institutional-readonly-projection.mjs",
+      "test/institutional-readonly-projection.test.mjs",
+      "docs/C3-CANONICAL-LEARNING-PRODUCTION-INGRESS-20261027.md",
+      "README.md",
+      "docs/checkpoints/C3-LEARNING-CANONICAL-INGRESS-20261027.json"
+    ],
+    "rollback": "Close or revert stacked Learning Ledger draft PR #3 while retaining canonical existing PR #1 and Runtime Fabric C3 mission #21; neither protected host record nor original ledger bytes were mutated.",
+    "exactBlocker": "Receipt Authority Issue #111 does not yet have a qualified atomic receipt-owned learning outbox on the real owner host; canonical writer multi-process unique-key and independent Veritas binding/readback remain unqualified."
+  },
+  "loop": [
+    {
+      "phase": "Investigate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Read original Learning Ledger candidate vault and source-only University adapters, the existing Runtime GPU-only canonical writer, C3 admission gate and atomic Receipt outbox issue.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/111"
+      ]
+    },
+    {
+      "phase": "Diagnose",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Source lacked reusable general receipt-owned ingress, same-key canonical lookup before append, crash/ACK reconciliation, independent role separation and verified nonpersonal University metadata projection.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/issues/2",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21"
+      ]
+    },
+    {
+      "phase": "Plan",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Build only externally bound Learning Ledger ingress and read-only retrieval around the canonical provider; leave Receipt's atomic outbox and Veritas signer under existing sovereign owners.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/111"
+      ]
+    },
+    {
+      "phase": "Implement",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Added strict versioned receipt-owned obligation validation, exact event digest, idempotent existing-writer reconciliation, role separation, bounded pending-event scan and metadata-only University reader.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/bb35606d2aef9669b82741b73ca6ed22a73ae93c",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/fcf9c5b854f9ddb34ebfc106cd2613e7600c5c74"
+      ]
+    },
+    {
+      "phase": "Test",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Full GitHub Node 22 suite initially failed one of 73 cases: a forged receipt-hash mismatch was correctly BLOCKED before digest dispute evaluation, while the assertion expected DISPUTED.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40628114060"
+      ]
+    },
+    {
+      "phase": "Validate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Confirmed that evidence mismatch classification is fail-closed, source callback claims cannot establish authentic independent signature, and no original Receipt/Veritas/Learning service was invoked in source tests.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/pull/112"
+      ]
+    },
+    {
+      "phase": "Repair",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Corrected the false assertion, added an independent digest-dispute case, required canonical chain and privacy proof, protected admission-key delimiter uniqueness, and required exact original receipt commit lineage on readback.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/963b4223bc3b4e7cc3f87ce08eda239ba0ea600b",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/152a687673d0428eca35ff32420453bff9b9cb93"
+      ]
+    },
+    {
+      "phase": "Retest",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Reran full synthetic-source regressions, including restart-after-ACK-loss, same-key conflict, verified failure and denial, independently qualified roles and source engineering archive. Exactly 81 tests passed.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40628327826"
+      ]
+    },
+    {
+      "phase": "Verify",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Read actual GitHub Actions logs for reviewed source commit ffb0b18f: 81 tests PASS, zero failures/skips, engineering archive scanner SOURCE_LOOP_DOCUMENTED; no independent live Veritas evidence verified.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40628327826",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/ffb0b18f6115438bbc5447b728bc8ac6b311960d"
+      ]
+    },
+    {
+      "phase": "Evidence",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Preserved source evidence, failure and repaired assertion, original authority handoff, full on-host acceptance matrix, rollback and unresolved dependencies; no protected canonical Learning or Receipt event was written.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/issues/2"
+      ]
+    }
+  ],
+  "learningCandidate": {
+    "kind": "ENGINEERING_EXPERIENCE_CANDIDATE",
+    "truthBoundary": "SOURCE_ONLY_NOT_CANONICAL_LEARNING",
+    "finding": "An independently verifiable source integration needs a receipt-owned durable obligation, strict same-key read-before-write reconciliation and role-separated readback; otherwise a crash after append can duplicate learning or falsely report admission.",
+    "recoveryPattern": "Preserve original mission and receipt identity; check atomic commit with Receipt Authority, independently verify original Veritas evidence, use canonical writer's unique admission key with full lineage, reconcile an uncertain ACK by readback, and quarantine mismatched digests without overwriting history.",
+    "transferableTo": [
+      "LeeWay Agent University engineering candidate index",
+      "LeeWay Agent Skills failure prevention and source repair procedures",
+      "Existing Runtime Fabric C3 original mission coordination"
+    ],
+    "promoteAutomatically": false,
+    "privacy": "PUBLIC_NON_PERSONAL_SOURCE_EVIDENCE_ONLY",
+    "contradictionHandling": "Any future live authenticated provider results supersede only the candidate interpretation; preserve the source history and attach new signed evidence rather than rewriting older records."
+  },
+  "blockers": [
+    {
+      "code": "RECEIPT_ATOMIC_OUTBOX_UNQUALIFIED",
+      "owner": "Original Receipt Authority",
+      "next": "Implement and independently qualify one atomic receipt plus learning-obligation commit and durable delivery acknowledgment on actual host"
+    },
+    {
+      "code": "CANONICAL_LEARNING_WRITER_IDEMPOTENCY_UNQUALIFIED",
+      "owner": "Original Learning Ledger writer",
+      "next": "Enforce cross-process atomic unique admission key/digest and restart-safe durable readback on the original writer"
+    },
+    {
+      "code": "INDEPENDENT_VERITAS_C3_UNENROLLED",
+      "owner": "Independent Veritas",
+      "next": "Enroll authentic independent production PRE POST issuer and verify exact original evidence and nonpersonal transfer scope"
+    },
+    {
+      "code": "UNIVERSITY_PRODUCTION_READER_UNQUALIFIED",
+      "owner": "Agent University and Memory/Security Harness",
+      "next": "Qualify authenticated read-only institutional record index and independent owner/tenant privacy controls"
+    },
+    {
+      "code": "ORIGINAL_C3_HOST_ACCEPTANCE_OPEN",
+      "owner": "Production and Final Execution",
+      "next": "Execute original physically observed Formula and C3 same-request chain with real protected receipts and restart evidence"
+    }
+  ]
+}
