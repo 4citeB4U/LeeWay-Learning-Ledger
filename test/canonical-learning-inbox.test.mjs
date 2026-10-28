@@ -355,3 +355,22 @@ test('33 record with same admission key but changed Formula lineage is disputed'
  const r=await run(d);
  assert.equal(r.status,'DISPUTED');assert.equal(r.reason,'LEARNING_READBACK_IDENTITY_OR_DIGEST_DISPUTED');
 });
+
+test('34 concurrent receipt delivery relies on canonical atomic key uniqueness, not the consumer',async()=>{
+ const d=makeProviders();
+ const [first,second]=await Promise.all([run(d),run(d)]);
+ assert.equal(first.status,'ADMITTED_VERIFIED');
+ assert.equal(second.status,'ADMITTED_VERIFIED');
+ assert.equal(d.records.size,1,'mock canonical writer admitted one durable effect');
+ assert.equal(first.recordId,second.recordId);
+ // This test exercises only our fake canonical Map; the actual original
+ // writer's durable multi-process uniqueness must be separately tested.
+});
+test('35 invalid independent provider identity is not healed by local fallback',async()=>{
+ const d=makeProviders();
+ d.canonicalLedger.verifyBinding=async ({role,scope})=>({
+   status:'QUALIFIED',role,scope,independentlyAuthenticated:true,providerId:'!'});
+ const r=await run(d);
+ assert.equal(r.reason,'PROVIDER_NOT_INDEPENDENTLY_QUALIFIED:CANONICAL_LEARNING_LEDGER_WRITER');
+ assert.equal(d.writes,0);
+});
