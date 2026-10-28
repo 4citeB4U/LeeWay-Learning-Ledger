@@ -83,6 +83,7 @@ const roles=[
  ['canonicalLedger','CANONICAL_LEARNING_LEDGER_WRITER']
 ];
 async function inspectBindings(deps,scope){
+ const providerIds=new Set();
  for(const [key,role] of roles){
   if(!obj(deps[key])||typeof deps[key].verifyBinding!=='function')
    return blocked('PROVIDER_BINDING_MISSING:'+role);
@@ -92,6 +93,9 @@ async function inspectBindings(deps,scope){
   if(proof?.status!=='QUALIFIED'||proof.role!==role||proof.scope!==scope||
      proof.independentlyAuthenticated!==true||!ID.test(proof.providerId||''))
    return blocked('PROVIDER_NOT_INDEPENDENTLY_QUALIFIED:'+role);
+  if(providerIds.has(proof.providerId))
+   return blocked('INDEPENDENT_AUTHORITY_ROLE_SEPARATION_FAILED');
+  providerIds.add(proof.providerId);
  }
  return {status:'QUALIFIED_BOUNDARY_CLAIM'};
 }
