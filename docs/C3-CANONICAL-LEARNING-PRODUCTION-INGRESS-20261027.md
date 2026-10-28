@@ -99,3 +99,11 @@ An Agent University reader has separate `CANONICAL_LEARNING_LEDGER_READER` permi
 - [ ] Publish genuine host/Veritas/Receipt/Learning evidence to original mission #21; promote only after independent policy/production admission.
 
 **Current authoritative status:** `SOURCE_DEVELOPMENT_IN_REVIEW / REAL_CANONICAL_AUTHORITY_NOT_ENROLLED / PRODUCTION_BLOCKED`. The Creator's 98% reduction target remains **unmeasured**; no source CI ratio is a production failure-reduction statistic.
+
+## Additional forensic hardening — admission-key collision and provenance
+
+The inherited canonical admission key wire format is `requestId:outcomeId:receiptHash`. Because that format uses colons as separators, newly admitted `requestId` and `outcomeId` values **must not themselves contain a colon**. The Learning ingress fails closed rather than silently interpreting two different identity tuples as the same key. The existing Runtime owner must adopt and verify the same constraint, or agree a versioned length-prefixed new admission-key encoding before broad deployment. Legacy records are never rewritten.
+
+A successful canonical writer readback must preserve **both** `receiptRecordId` and `receiptCommitId`, plus Formula receipt, Veritas PRE/POST, independent readback, source revision, capability, coded pattern, exact outcome and event digest. Mere 64-character hash shape is insufficient. Independent Veritas must separately report `privacyCleared:true` and `transferEligible:true` under its authentic role and scope, and the Receipt Authority must confirm verified chain and independent readback for the original atomic commit. All of these are **trusted-provider contracts** pending real signed host qualifications.
+
+The tests also exercise a shared provider attempting to act as Receipt, Veritas and Learning simultaneously; the ingress rejects reused provider identities. A concurrent same-key fixture demonstrates dependence on the **original canonical writer's atomic uniqueness**; the mocked writer is not a production database concurrency qualification.
