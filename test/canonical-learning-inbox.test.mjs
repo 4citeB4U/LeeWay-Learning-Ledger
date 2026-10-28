@@ -260,7 +260,7 @@ test('22 forged local receipt/learning keys cannot rewrite other source events',
 test('23 a purported found record without true canonical record identity is DISPUTED',async()=>{
  const d=makeProviders();
  d.canonicalLedger.findByAdmissionKey=async()=>({
-  status:'FOUND',recordId:'invalid',eventDigest:makeObligation().eventDigest
+  status:'FOUND',recordId:'!',eventDigest:makeObligation().eventDigest
  });
  const r=await run(d);
  assert.equal(r.status,'DISPUTED');safe(r);
