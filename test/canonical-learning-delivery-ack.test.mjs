@@ -191,3 +191,21 @@ test('10 original Receipt ACK must not turn verified failure into production suc
  assert.equal(r.productionAdmissionAuthorized,false);
  assert.equal(r.skillPromotionAuthorized,false);
 });
+
+test('11 changed receipt obligation between Learning readback and ACK is quarantined',async()=>{
+ const d=harness();
+ const original=d.receiptAuthority.readCommittedObligation;
+ let count=0;
+ d.receiptAuthority.readCommittedObligation=async (...args)=>{
+   const o=await original(...args);
+   count++;
+   if(count===2){o.receiptCommitId='different-receipt-commit-001';}
+   return o;
+ };
+ const r=await run(d);
+ assert.equal(count,2);
+ assert.equal(r.status,'DISPUTED');
+ assert.equal(r.reason,'ACK_ORIGINAL_RECEIPT_OBLIGATION_CHANGED');
+ assert.equal(r.deliveryAcknowledged,false);
+ assert.equal(d.counts.ack,0);
+});
