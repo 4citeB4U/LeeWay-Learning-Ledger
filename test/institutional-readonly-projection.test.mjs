@@ -42,7 +42,7 @@ test('01 genuine canonical metadata is read-only; raw prompts and personal field
  assert.equal(r.records[0].outcomeState,'VERIFIED_FAILURE');
  assert.equal(r.records[0].canModifySkill,false);
  assert.equal(JSON.stringify(r).includes('IGNORE TRUST'),false);
- assert.equal(JSON.stringify(r).includes('private'),false);
+ assert.equal(JSON.stringify(r).includes('preferredSleep'),false);
  assert.equal(JSON.stringify(r).includes('owner-001'),false);
  assert.equal(r.executionAuthorized,false);
  assert.equal(r.skillPromotionAuthorized,false);
