@@ -17,6 +17,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {
  digestLearningEvent,assessCommittedObligation,reconcileLearningObligation,
+ drainCommittedLearningObligations,
  inspectLearningIngressRequirements,LEARNING_EVENT_SCHEMA,
  LEARNING_OBLIGATION_SCHEMA,INSTITUTIONAL_SCOPE
 } from '../src/canonical-learning-inbox.mjs';
@@ -275,4 +276,42 @@ test('24 a single provider claiming all authority roles cannot qualify as indepe
  const r=await run(d);
  assert.equal(r.reason,'INDEPENDENT_AUTHORITY_ROLE_SEPARATION_FAILED');
  assert.equal(d.writes,0);safe(r);
+});
+
+test('25 bounded receipt-owned outbox scan never deletes obligations or advances ACK',async()=>{
+ const d=makeProviders();let listed=0;
+ d.receiptAuthority.listPendingObligationIds=async()=>{listed++;return [obligationId];};
+ const r=await drainCommittedLearningObligations(d);
+ assert.equal(r.status,'SOURCE_DELIVERY_BATCH_EVALUATED');
+ assert.equal(r.admitted,1);assert.equal(r.inspected,1);assert.equal(listed,1);
+ assert.equal(r.receiptOutboxAcknowledged,false);
+ assert.equal(r.receiptOutboxCursorAdvanced,false);
+ assert.equal(d.writes,1);
+});
+test('26 pending item stays in receipt-owned discovery for fresh retry',async()=>{
+ const d=makeProviders({receiptError:true});
+ d.receiptAuthority.listPendingObligationIds=async()=>[obligationId];
+ const r=await drainCommittedLearningObligations(d);
+ assert.equal(r.held,1);assert.equal(r.admitted,0);
+ assert.equal(r.results[0].status,'PENDING_RECONCILIATION');
+});
+test('27 malformed receipt-owned batch is refused before any append',async()=>{
+ const d=makeProviders();
+ d.receiptAuthority.listPendingObligationIds=async()=>[obligationId,obligationId];
+ const r=await drainCommittedLearningObligations(d);
+ assert.equal(r.reason,'RECEIPT_OUTBOX_PENDING_INDEX_INVALID');
+ assert.equal(d.writes,0);
+});
+test('28 absent bound original outbox is not replaced by a local queue',async()=>{
+ const d=makeProviders();
+ const r=await drainCommittedLearningObligations(d);
+ assert.equal(r.reason,'RECEIPT_OWNED_OUTBOX_DISCOVERY_UNBOUND');
+ assert.equal(d.writes,0);
+});
+test('29 batch refuses unbounded enumeration even if provider accepts it',async()=>{
+ const d=makeProviders();d.receiptAuthority.listPendingObligationIds=async()=>[obligationId];
+ for(const limit of [0,51,1.5]){
+  const r=await drainCommittedLearningObligations({...d,limit});
+  assert.equal(r.reason,'DELIVERY_BATCH_SCOPE_OR_LIMIT_INVALID');
+ }
 });
