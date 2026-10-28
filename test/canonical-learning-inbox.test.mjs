@@ -265,3 +265,14 @@ test('23 a purported found record without true canonical record identity is DISP
  const r=await run(d);
  assert.equal(r.status,'DISPUTED');safe(r);
 });
+
+test('24 a single provider claiming all authority roles cannot qualify as independent',async()=>{
+ const d=makeProviders();
+ for(const role of Object.keys(roles)){
+   const original=d[role].verifyBinding;
+   d[role].verifyBinding=async a=>({...await original(a),providerId:'shared-issuer-001'});
+ }
+ const r=await run(d);
+ assert.equal(r.reason,'INDEPENDENT_AUTHORITY_ROLE_SEPARATION_FAILED');
+ assert.equal(d.writes,0);safe(r);
+});
