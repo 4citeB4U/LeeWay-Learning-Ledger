@@ -68,7 +68,8 @@ function makeProviders({obligation=makeObligation(),lookupState='NORMAL',appendS
    async readCommittedObligation(){if(receiptError)throw Error('OFFLINE');
      return structuredClone(obligation);},
    async verifyAtomicReceiptCommit(){return {
-    status:commitStatus,atomicWithReceipt:true,obligationId,requestId,
+    status:commitStatus,atomicWithReceipt:true,canonicalChainVerified:true,
+    independentReadbackVerified:true,obligationId,requestId,
     receiptHash,receiptRecordId:'canonical-receipt-001',
     receiptCommitId:'receipt-commit-001',eventDigest:obligation.eventDigest
    };}
@@ -76,7 +77,8 @@ function makeProviders({obligation=makeObligation(),lookupState='NORMAL',appendS
   independentVeritas:{
    verifyBinding:binding('independentVeritas'),
    async verifyOutcomeEvidence(){return {
-    status:veritasStatus,independentVerified:true,requestId,receiptHash,
+    status:veritasStatus,independentVerified:true,privacyCleared:true,
+    transferEligible:true,requestId,receiptHash,
     admissionKey:obligation.admissionKey,eventDigest:obligation.eventDigest,
     outcomeState:obligation.event.outcomeState,scope:INSTITUTIONAL_SCOPE
    };}
@@ -101,7 +103,12 @@ function makeProviders({obligation=makeObligation(),lookupState='NORMAL',appendS
        durableReadbackVerified:true,recordId:'fixture-record-001',readbackSha256:H('9'),
        admissionKey,requestId:incoming.requestId,outcomeId:incoming.outcomeId,
        receiptHash:incoming.receiptHash,eventDigest,scope:incoming.scope,
-       outcomeState:incoming.outcomeState
+       outcomeState:incoming.outcomeState,formulaReceiptHash:incoming.formulaReceiptHash,
+       veritasPreReceiptHash:incoming.veritasPreReceiptHash,
+       veritasPostReceiptHash:incoming.veritasPostReceiptHash,
+       independentReadbackHash:incoming.independentReadbackHash,
+       sourceRevision:incoming.sourceRevision,capabilityId:incoming.capabilityId,
+       patternCode:incoming.patternCode
      });
      persist();
     }
@@ -323,4 +330,28 @@ test('30 unchanged identity with tampered event digest is disputed, never admitt
  assert.equal(r.status,'DISPUTED');
  assert.equal(r.reason,'OBLIGATION_EVENT_DIGEST_MISMATCH');
  assert.equal(d.writes,0);
+});
+
+test('31 independent Veritas must explicitly clear nonpersonal transferable learning',async()=>{
+ const d=makeProviders();
+ const prior=d.independentVeritas.verifyOutcomeEvidence;
+ d.independentVeritas.verifyOutcomeEvidence=async a=>({...await prior(a),privacyCleared:false});
+ const r=await run(d);
+ assert.equal(r.reason,'INDEPENDENT_VERITAS_OUTCOME_NOT_QUALIFIED');
+ assert.equal(d.writes,0);
+});
+test('32 canonical receipt chain and independent readback must be verified',async()=>{
+ const d=makeProviders();
+ const prior=d.receiptAuthority.verifyAtomicReceiptCommit;
+ d.receiptAuthority.verifyAtomicReceiptCommit=async a=>({...await prior(a),canonicalChainVerified:false});
+ const r=await run(d);
+ assert.equal(r.reason,'RECEIPT_ATOMIC_COMMIT_NOT_VERIFIED');
+ assert.equal(d.writes,0);
+});
+test('33 record with same admission key but changed Formula lineage is disputed',async()=>{
+ const d=makeProviders();
+ const read=d.canonicalLedger.readback;
+ d.canonicalLedger.readback=async a=>({...await read(a),formulaReceiptHash:H('7')});
+ const r=await run(d);
+ assert.equal(r.status,'DISPUTED');assert.equal(r.reason,'LEARNING_READBACK_IDENTITY_OR_DIGEST_DISPUTED');
 });
