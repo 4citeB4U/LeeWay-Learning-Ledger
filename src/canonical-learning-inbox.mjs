@@ -105,7 +105,14 @@ const actualRecord=(record,obligation)=>obj(record)&&record.status==='ADMITTED_V
  record.admissionKey===obligation.admissionKey&&
  record.requestId===obligation.requestId&&record.outcomeId===obligation.outcomeId&&
  record.receiptHash===obligation.receiptHash&&record.eventDigest===obligation.eventDigest&&
- record.scope===obligation.scope&&record.outcomeState===obligation.event.outcomeState;
+ record.scope===obligation.scope&&record.outcomeState===obligation.event.outcomeState&&
+ record.formulaReceiptHash===obligation.event.formulaReceiptHash&&
+ record.veritasPreReceiptHash===obligation.event.veritasPreReceiptHash&&
+ record.veritasPostReceiptHash===obligation.event.veritasPostReceiptHash&&
+ record.independentReadbackHash===obligation.event.independentReadbackHash&&
+ record.sourceRevision===obligation.event.sourceRevision&&
+ record.capabilityId===obligation.event.capabilityId&&
+ record.patternCode===obligation.event.patternCode;
 
 /**
  * The canonical writer MUST enforce a UNIQUE admissionKey with exact eventDigest
@@ -145,6 +152,7 @@ export async function reconcileLearningObligation({
    readOnly:true
  });}catch{return pending('RECEIPT_ATOMIC_COMMIT_RECHECK_UNAVAILABLE');}
  if(commit?.status!=='VERIFIED'||commit.atomicWithReceipt!==true||
+    commit.canonicalChainVerified!==true||commit.independentReadbackVerified!==true||
     commit.obligationId!==obligationId||commit.requestId!==obligation.requestId||
     commit.receiptHash!==obligation.receiptHash||
     commit.receiptRecordId!==obligation.receiptRecordId||
@@ -158,6 +166,7 @@ export async function reconcileLearningObligation({
    receiptHash:obligation.receiptHash,readOnly:true
  });}catch{return pending('INDEPENDENT_VERITAS_RECHECK_UNAVAILABLE');}
  if(decision?.status!=='VERIFIED'||decision.independentVerified!==true||
+    decision.privacyCleared!==true||decision.transferEligible!==true||
     decision.admissionKey!==obligation.admissionKey||
     decision.eventDigest!==obligation.eventDigest||
     decision.requestId!==obligation.requestId||
