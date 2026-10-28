@@ -15,6 +15,9 @@ import {createHash} from 'node:crypto';
 
 const HASH=/^[a-f0-9]{64}$/;
 const ID=/^[A-Za-z0-9][A-Za-z0-9._:-]{2,159}$/;
+// Admission key uses colon separators. The two tuple IDs must not contain
+// colon or distinct request/outcome pairs can collide in its wire format.
+const KEY_PART=/^[A-Za-z0-9][A-Za-z0-9._-]{2,159}$/;
 export const LEARNING_OBLIGATION_SCHEMA='leeway.receipt.learning-obligation.v1';
 export const LEARNING_EVENT_SCHEMA='leeway.learning.verified-technical-outcome.v1';
 export const INSTITUTIONAL_SCOPE='LEEWAY_INSTITUTIONAL_NONPERSONAL';
@@ -51,7 +54,7 @@ export function assessCommittedObligation(obligation,{obligationId,scope=INSTITU
  if(!hasExact(obligation,obligationKeys)||!hasExact(obligation?.event,eventKeys))
   return blocked('OBLIGATION_SCHEMA_UNRECOGNIZED');
  if(!ID.test(obligationId||'')||obligation.obligationId!==obligationId||
-    !ID.test(obligation.requestId)||!ID.test(obligation.outcomeId)||
+    !KEY_PART.test(obligation.requestId)||!KEY_PART.test(obligation.outcomeId)||
     !ID.test(obligation.receiptRecordId)||!ID.test(obligation.receiptCommitId)||
     !HASH.test(obligation.receiptHash)||!HASH.test(obligation.eventDigest))
   return blocked('OBLIGATION_IDENTITY_OR_DIGEST_INVALID');
@@ -104,7 +107,10 @@ const actualRecord=(record,obligation)=>obj(record)&&record.status==='ADMITTED_V
  ID.test(record.recordId||'')&&HASH.test(record.readbackSha256||'')&&
  record.admissionKey===obligation.admissionKey&&
  record.requestId===obligation.requestId&&record.outcomeId===obligation.outcomeId&&
- record.receiptHash===obligation.receiptHash&&record.eventDigest===obligation.eventDigest&&
+ record.receiptHash===obligation.receiptHash&&
+ record.receiptRecordId===obligation.receiptRecordId&&
+ record.receiptCommitId===obligation.receiptCommitId&&
+ record.eventDigest===obligation.eventDigest&&
  record.scope===obligation.scope&&record.outcomeState===obligation.event.outcomeState&&
  record.formulaReceiptHash===obligation.event.formulaReceiptHash&&
  record.veritasPreReceiptHash===obligation.event.veritasPreReceiptHash&&
