@@ -75,7 +75,11 @@ export async function reconcileLearningDeliveryAck({
    obligationId,scope,readOnly:true});}
  catch{return pending('ACK_ORIGINAL_OBLIGATION_UNAVAILABLE');}
  if(assessCommittedObligation(obligation,{obligationId,scope}).status!=='SOURCE_SHAPE_VALID'||
-    obligation.admissionKey!==learning.admissionKey)
+    obligation.admissionKey!==learning.admissionKey||
+    obligation.eventDigest!==learning.eventDigest||
+    obligation.receiptHash!==learning.receiptHash||
+    obligation.receiptRecordId!==learning.receiptRecordId||
+    obligation.receiptCommitId!==learning.receiptCommitId)
    return disputed('ACK_ORIGINAL_RECEIPT_OBLIGATION_CHANGED');
 
  const expected={
