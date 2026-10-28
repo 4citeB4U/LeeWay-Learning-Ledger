@@ -256,7 +256,7 @@ test('21 reported readiness booleans are source-only, not qualified authority',(
 test('22 forged local receipt/learning keys cannot rewrite other source events',async()=>{
  const o=makeObligation();o.event.receiptHash=H('7');
  const r=await run(makeProviders({obligation:o}));
- assert.equal(r.status,'DISPUTED');assert.equal(r.reason,'OBLIGATION_EVENT_DIGEST_MISMATCH');
+ assert.equal(r.status,'BLOCKED');assert.equal(r.reason,'EVENT_PROVENANCE_OR_OUTCOME_INVALID');
 });
 test('23 a purported found record without true canonical record identity is DISPUTED',async()=>{
  const d=makeProviders();
@@ -314,4 +314,13 @@ test('29 batch refuses unbounded enumeration even if provider accepts it',async(
   const r=await drainCommittedLearningObligations({...d,limit});
   assert.equal(r.reason,'DELIVERY_BATCH_SCOPE_OR_LIMIT_INVALID');
  }
+});
+
+test('30 unchanged identity with tampered event digest is disputed, never admitted',async()=>{
+ const o=makeObligation();o.eventDigest=H('8');
+ const d=makeProviders({obligation:o});
+ const r=await run(d);
+ assert.equal(r.status,'DISPUTED');
+ assert.equal(r.reason,'OBLIGATION_EVENT_DIGEST_MISMATCH');
+ assert.equal(d.writes,0);
 });
