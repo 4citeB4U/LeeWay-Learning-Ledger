@@ -102,7 +102,9 @@ function makeProviders({obligation=makeObligation(),lookupState='NORMAL',appendS
        status:'ADMITTED_VERIFIED',authority:'leeway-learning-ledger',
        durableReadbackVerified:true,recordId:'fixture-record-001',readbackSha256:H('9'),
        admissionKey,requestId:incoming.requestId,outcomeId:incoming.outcomeId,
-       receiptHash:incoming.receiptHash,eventDigest,scope:incoming.scope,
+       receiptHash:incoming.receiptHash,
+       receiptRecordId:'canonical-receipt-001',receiptCommitId:'receipt-commit-001',
+       eventDigest,scope:incoming.scope,
        outcomeState:incoming.outcomeState,formulaReceiptHash:incoming.formulaReceiptHash,
        veritasPreReceiptHash:incoming.veritasPreReceiptHash,
        veritasPostReceiptHash:incoming.veritasPostReceiptHash,
@@ -373,4 +375,21 @@ test('35 invalid independent provider identity is not healed by local fallback',
  const r=await run(d);
  assert.equal(r.reason,'PROVIDER_NOT_INDEPENDENTLY_QUALIFIED:CANONICAL_LEARNING_LEDGER_WRITER');
  assert.equal(d.writes,0);
+});
+
+test('36 admission key rejects colon-ambiguous request and outcome tuple pairs',()=>{
+ const o=makeObligation();o.requestId='c3:original-001';
+ o.event.requestId=o.requestId;
+ o.admissionKey=o.requestId+':'+o.outcomeId+':'+o.receiptHash;
+ o.eventDigest=digestLearningEvent(o.event);
+ const r=assessCommittedObligation(o,{obligationId});
+ assert.equal(r.reason,'OBLIGATION_IDENTITY_OR_DIGEST_INVALID');
+});
+test('37 authenticated Learning readback must correlate original receipt commit record',async()=>{
+ const d=makeProviders();
+ const prior=d.canonicalLedger.readback;
+ d.canonicalLedger.readback=async x=>({...await prior(x),receiptCommitId:'foreign-commit-001'});
+ const r=await run(d);
+ assert.equal(r.status,'DISPUTED');
+ assert.equal(r.reason,'LEARNING_READBACK_IDENTITY_OR_DIGEST_DISPUTED');
 });
