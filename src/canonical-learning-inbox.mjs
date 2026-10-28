@@ -192,6 +192,9 @@ export async function reconcileLearningObligation({
   return result('ADMITTED_VERIFIED','CANONICAL_SAME_KEY_DURABLE_READBACK',{
    canonicalLearningAdmitted:true,admissionKey:obligation.admissionKey,
    recordId:record.recordId,readbackSha256:record.readbackSha256,
+   eventDigest:obligation.eventDigest,receiptHash:obligation.receiptHash,
+   receiptRecordId:obligation.receiptRecordId,
+   receiptCommitId:obligation.receiptCommitId,
    outcomeState:record.outcomeState,replaySafe:true,
    verifiedByHostBindingsNotLocalSignatures:true
   });
