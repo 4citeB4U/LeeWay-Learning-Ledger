@@ -1,0 +1,190 @@
+{
+  "schema": "leeway.engineering.loop.checkpoint.v1",
+  "checkpointId": "C3-LEARNING-DELIVERY-ACK-20261027",
+  "task": "Close Learning-owned delivery acknowledgment reconciliation and quarantine legacy false-admission source while preserving original Receipt Authority",
+  "parentMission": {
+    "owner": "4citeB4U/Leeway-Runtime-Fabric",
+    "url": "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21",
+    "acceptance": "C3_SAME_REQUEST_VERITAS_RECEIPT_ATOMIC_OUTBOX_LEARNING_READBACK"
+  },
+  "source": {
+    "owner": "4citeB4U/LeeWay-Learning-Ledger",
+    "branch": "review/c3-canonical-learning-inbox-recovery-20261027",
+    "reviewPr": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+    "reviewedCommit": "69ef441b0fa318d853014df0c8874e125c5e09a3",
+    "scope": "SOURCE_ONLY"
+  },
+  "authority": {
+    "engineeringLaw": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md",
+    "permanentRules": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/standards/PERMANENT-ENGINEERING-RULES.md",
+    "contributorProtocol": "https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/docs/CONTRIBUTOR-HANDOFF-PROTOCOL.md"
+  },
+  "classification": "MISSING_GLUE",
+  "acceptance": {
+    "source": {
+      "status": "CI_PASS",
+      "workflowRun": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40630895593",
+      "testsPass": 92,
+      "testsFail": 0,
+      "testsSkipped": 0
+    },
+    "deployment": "NOT_DEPLOYED",
+    "liveOwnerHost": "NOT_OBSERVED",
+    "veritas": "NOT_OBSERVED",
+    "canonicalReceipt": "NOT_CREATED",
+    "canonicalLearning": "NOT_ADMITTED",
+    "production": "BLOCKED"
+  },
+  "scopeAndSafeguards": {
+    "preserved": [
+      "Original Receipt Authority and immutable receipt history",
+      "Original canonical Learning Ledger writer and protected journal history",
+      "Independent Veritas existing cryptographic root authority and signed evidence",
+      "Previously archived three distinct source engineering checkpoints",
+      "Original Runtime C3 mission issue #21 and owner workplane/child-lineage"
+    ],
+    "changed": [
+      "src/canonical-learning-delivery-ack.mjs",
+      "test/canonical-learning-delivery-ack.test.mjs",
+      "src/canonical-learning-inbox.mjs",
+      "docs/C3-CANONICAL-LEARNING-PRODUCTION-INGRESS-20261027.md",
+      "docs/checkpoints/C3-LEARNING-DELIVERY-ACK-20261027.json",
+      "Runtime Fabric draft PR #112 legacy provider quarantine/CI"
+    ],
+    "rollback": "Close or revert the stacked draft PR #3 and existing Runtime PR #112 source review additions; do not touch protected original Receipt or Learning ledger bytes or their original verified prefix.",
+    "exactBlocker": "Actual Receipt Authority atomic learning obligation, genuine ACK persistence/custody, live signed Veritas PRE/POST, production writer uniqueness and owner-host restart/readback remain unqualified even though 92 source tests pass."
+  },
+  "loop": [
+    {
+      "phase": "Investigate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Inspected original Learning inbox recovery, original Receipt Authority owned-outbox Issue #111, original Runtime legacy Learning provider and ongoing source CI results.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/111"
+      ]
+    },
+    {
+      "phase": "Diagnose",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Found original Learning consumer could read back canonical admission but could not safely return durable delivery ACK to the Receipt Authority; legacy Runtime provider still reported admitted:true and wrote plaintext candidate files.",
+      "evidence": [
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/pull/112"
+      ]
+    },
+    {
+      "phase": "Plan",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Reuse original Receipt-owned durable ACK authority and original Learning inbox verification, prohibit a second receipt ledger or unauthenticated ACK; quarantine legacy candidate path without overriding original writer.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/111"
+      ]
+    },
+    {
+      "phase": "Implement",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Added a receipt-owner ACK handoff, uncertain-ACK reconciliation, exact original obligation/commit recheck and 11 isolated source regressions; patched legacy Runtime source to refuse false canonical status and local plaintext writes.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/3647b7ee5dbd7872753e2967842dc44730007c81",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/commit/c469a8a90b4aae8a7fa4dc06558526185c5edd32"
+      ]
+    },
+    {
+      "phase": "Test",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Source CI exercised durable ACK fixture restart, lost acknowledgments, valid repeat, conflicting ACK, invalid scope, original Learning readback, and the Runtime legacy quarantine tests.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40630719922",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/actions/runs/40630794698"
+      ]
+    },
+    {
+      "phase": "Validate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Checked that successful Learning admission still cannot authorize actions, completed ACK must have an exact original receipt/learning correlation, and original provider states do not change by source assertions.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/pull/112"
+      ]
+    },
+    {
+      "phase": "Repair",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Tightened the two-step ACK procedure to reject original Receipt obligation changing after canonical Learning readback, and embedded exact receipt hash, commit record and event digest in the qualified inbox result.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/7fbbd3db3f4d1d61ec3317f061bcc68c5d002f41",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/a87fbab8a3c8d3b77efb40495b10616f12b0bc4b"
+      ]
+    },
+    {
+      "phase": "Retest",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Ran complete Node 22 suite after ACK time-of-check/time-of-use hardening: 92 source tests passed, zero failure and zero skipped; Runtime legacy quarantine companion source suite passed 38 tests.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40630895593",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/actions/runs/40630794698"
+      ]
+    },
+    {
+      "phase": "Verify",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Read actual final 92-test GitHub workflow log and source engineering scanner; this is source-level validation only, not an independent live Veritas or on-host canonical Ledger ACK.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40630895593",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/69ef441b0fa318d853014df0c8874e125c5e09a3"
+      ]
+    },
+    {
+      "phase": "Evidence",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Archived separate ten-stage source cycle, original root mission, distinct Receipt, Veritas, Learning and Production responsibilities and explicit unsupported production claims; retained all earlier checkpoints.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21"
+      ]
+    }
+  ],
+  "learningCandidate": {
+    "kind": "ENGINEERING_EXPERIENCE_CANDIDATE",
+    "truthBoundary": "SOURCE_ONLY_NOT_CANONICAL_LEARNING",
+    "finding": "The original Receipt Authority delivery ACK is distinct from a Learning admission: a verified append can be durable while its ACK is lost, and rereading the original obligation after learning completion is required before acknowledging delivery.",
+    "recoveryPattern": "Use the original Learning inbox's exact canonical readback, recheck original receipt commitment and event digest before ACK, inspect existing original Receipt ACK by key before writing, return PENDING_RECONCILIATION for uncertain acknowledgment and never rewrite receipt history or promote authority.",
+    "transferableTo": [
+      "LeeWay Agent University engineering candidate index",
+      "LeeWay Agent Skills failure prevention and source repair procedures",
+      "Existing Runtime Fabric C3 original mission coordination"
+    ],
+    "promoteAutomatically": false,
+    "privacy": "PUBLIC_NON_PERSONAL_SOURCE_EVIDENCE_ONLY",
+    "contradictionHandling": "Any future live authenticated provider results supersede only the candidate interpretation; preserve the source history and attach new signed evidence rather than rewriting older records."
+  },
+  "blockers": [
+    {
+      "code": "ORIGINAL_RECEIPT_ATOMIC_ACK_NOT_QUALIFIED",
+      "owner": "Canonical Receipt Authority",
+      "next": "Implement immutable transaction-owned obligation plus atomic unique delivery ACK and authenticate real on-host readback"
+    },
+    {
+      "code": "LEARNING_CANONICAL_WRITER_NOT_QUALIFIED",
+      "owner": "Canonical Learning Ledger",
+      "next": "Qualify actual original writer durable unique admission key, full lineage and multi-process restart-safe readback"
+    },
+    {
+      "code": "INDEPENDENT_VERITAS_NOT_ENROLLED",
+      "owner": "Independent Veritas",
+      "next": "Enroll real independent production custodian and obtain genuine PRE POST signature and owner permission evidence"
+    },
+    {
+      "code": "UNIVERSITY_HOST_PRIVACY_GATE_OPEN",
+      "owner": "Learning Ledger Security Harness and Agent University",
+      "next": "Verify real private owner encryption key lifecycle, scope and qualified read-only University projections"
+    },
+    {
+      "code": "ORIGINAL_C3_PRODUCTION_EXECUTION_OPEN",
+      "owner": "Production and Final Execution",
+      "next": "Run actual original-host full Formula Veritas Receipt Learning and production restart acceptance with source and receipt hashes"
+    }
+  ]
+}
