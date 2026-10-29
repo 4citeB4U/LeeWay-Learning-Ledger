@@ -1,0 +1,284 @@
+{
+  "schema": "leeway.learning.independent-component-readiness.v1",
+  "assessmentDate": "2026-10-28",
+  "targetComponent": "LEEWAY_LEARNING_LEDGER_ONLY",
+  "fullGoal": "An independently deployable, secure, crash-safe, historical-continuous governed learning authority with two separated lanes: owner-private experiential candidates and nonpersonal independently verified institutional technical outcomes, whose canonical Learning writer is unique, durable, replay-safe, and privacy-scoped; returns exact read-only eligible lessons without forging Receipt, Veritas, Formula, Skills, identity or production authority.",
+  "level": "INDEPENDENT_PREINTEGRATION_ONLY",
+  "currentStage": "SOURCE_CONTRACTS_TESTED_INDEPENDENT_COMPONENT_NOT_QUALIFIED",
+  "sourceRefs": {
+    "canonicalMain": "7c68a824b326b26a1d386edfba11d352863531a0",
+    "candidateParent": "ab737af2da374c1b1432c081c228c80b294a3f6d",
+    "canonicalIngressReview": "3b50a9b41a99cf0d48b2bb369f12447a207ae23c",
+    "mainRoot": "README_ONLY",
+    "sourceTestsPassing": 92,
+    "sourceTestsFailing": 0,
+    "engineeringSourceCheckpoints": 4,
+    "ci": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40630987933"
+  },
+  "authorityBoundaries": {
+    "owns": [
+      "canonical_learning_admission_and_unique_writer_effect",
+      "historical_learning_custody_and_recovery",
+      "owner_private_encrypted_candidate_custody",
+      "epistemic_states_and_corrections",
+      "learning_delivery_consumer_reconciliation",
+      "qualified_read_only_learning_projections"
+    ],
+    "doesNotOwn": [
+      "canonical_receipt_writer_or_outbox_commit",
+      "receipt_delivery_ack_writer",
+      "independent_veritas_issuer_or_trust_root",
+      "golden_formula_or_runtime_dispatch",
+      "skill_permission_or_owner_identity_issuer",
+      "canonical_continuum_storage_issuer",
+      "production_release_authority"
+    ]
+  },
+  "readinessStatusAllowed": [
+    "SOURCE_TESTED",
+    "PARTIAL_SOURCE",
+    "NOT_IMPLEMENTED",
+    "UNVERIFIED"
+  ],
+  "independentGates": [
+    {
+      "id": "LL-01",
+      "name": "Canonical ownership and source promotion",
+      "status": "PARTIAL_SOURCE",
+      "currentEvidence": "PR #1 and #3 are still open, unmerged; main is README-only.",
+      "componentOwnedWork": "Prepare reviewed release line from original two drafts without losing owner history.",
+      "exitCriterion": "Merged signed/version-pinned source on approved canonical branch; no duplicate canonical writer.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-02",
+      "name": "Original canonical Learning writer adapter",
+      "status": "NOT_IMPLEMENTED",
+      "currentEvidence": "Inbox uses verifyBinding/findByAdmissionKey/admit/readback callbacks; GPU-only Runtime PowerShell writer not universal.",
+      "componentOwnedWork": "Inspect/pin original Learning writer, implement its qualified provider adapter; preserve original append history.",
+      "exitCriterion": "Authentic writer identity and readback on an authorized isolated Learning host, without Receipt/Veritas dependency fakes.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-03",
+      "name": "Writer atomic uniqueness and replay",
+      "status": "NOT_IMPLEMENTED",
+      "currentEvidence": "Source Map mocks exercise dupes, but physical writer across processes has no proven atomic admission index.",
+      "componentOwnedWork": "Unique constraint on original admissionKey and eventDigest, multi-worker conflict handling, durable lookup-before-retry.",
+      "exitCriterion": "64+ concurrent same-key submits yield exactly one canonical record; mismatch never overwrites.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-04",
+      "name": "Historical custody and immutable prefix",
+      "status": "PARTIAL_SOURCE",
+      "currentEvidence": "Pinned source historical reader and synthetic tests for 133-event prefix; no fresh original host access.",
+      "componentOwnedWork": "Independent original source hash/journal head check, quarantined corrupt tails, owner-approved backup/restore.",
+      "exitCriterion": "Byte-identical known prefix and exact anchor verified before/after rehearsal; no original history rewrite.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-05",
+      "name": "Epistemic states and source event validation",
+      "status": "SOURCE_TESTED",
+      "currentEvidence": "Versioned strict institutional technical event schema; deny unknown personal fields; include verified failures/denials.",
+      "componentOwnedWork": "Freeze code states, metadata semantics, outcome taxonomy, optional measured cost/transfer evidence with standards review.",
+      "exitCriterion": "All coded source statuses and invalid inputs are deterministic; no inferred failure becomes an execution PASS.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-06",
+      "name": "Original Receipt/Veritas interface contract",
+      "status": "PARTIAL_SOURCE",
+      "currentEvidence": "Role-separated verifyBinding callbacks and exact hash fields; real signed issuers not enrolled.",
+      "componentOwnedWork": "Freeze source protocol and two-hash semantics, typed issuer IDs/expiry/revocation, fail-closed absent roles.",
+      "exitCriterion": "Independent adapter-conformance tests reject forged/stale issuer, wrong scope and hash provenance.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-07",
+      "name": "Crash/restart and uncertain-ACK reconciliation",
+      "status": "PARTIAL_SOURCE",
+      "currentEvidence": "Source fixtures cover lost ACK and process re-open; no canonical writer kill/disk-full persistence test.",
+      "componentOwnedWork": "Implement persisted reconciliation index on original writer and exact restart-safe source consumer state.",
+      "exitCriterion": "Crash at all Learning write/readback/ACK boundaries never double-admits or blindly ACKs.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-08",
+      "name": "Private candidate encrypted journal",
+      "status": "PARTIAL_SOURCE",
+      "currentEvidence": "Source AES-256-GCM vault, lock, fsync, integrity and owner-scoped projections, but ephemeral test keys.",
+      "componentOwnedWork": "Package approved storage layout and owner key-provider contract, lock expiry/recovery and invalid tail quarantine.",
+      "exitCriterion": "Real owner key and restart test, denied wrong key/scope and verifiable private journal readback.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-09",
+      "name": "Identity, consent, corrections and revocation",
+      "status": "PARTIAL_SOURCE",
+      "currentEvidence": "Private source projection suppresses opted-out views; externally authenticated owner/permission lifecycle not demonstrated.",
+      "componentOwnedWork": "Bind owner identity, collection/personalization consent separation, corrections/supersession and policy checks.",
+      "exitCriterion": "Denied/unconsented owner requests reveal no data; revocations remove derived views immediately.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-10",
+      "name": "Privacy retention, export and erasure",
+      "status": "NOT_IMPLEMENTED",
+      "currentEvidence": "Private encrypted journal lacks owner-authorized export/deletion, retention policy and key rotation qualification.",
+      "componentOwnedWork": "Create explicit privacy retention index, export, deletion/crypto-erasure proof and independent policy review.",
+      "exitCriterion": "Owner-scoped export, correction, revocation and erasure tested with durable recovery and legal holds.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-11",
+      "name": "Recovery backups and portable storage",
+      "status": "NOT_IMPLEMENTED",
+      "currentEvidence": "Local encrypted candidate writer only; no qualified original journal backup/restore/replica across hosts.",
+      "componentOwnedWork": "Implement verified snapshot/restore preserving exact original history; use approved Continuum transport only after independent qualification.",
+      "exitCriterion": "Rebuild bytes/journal indexes on a clean host and prove recoverability after loss.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-12",
+      "name": "Institutional read-only reference projection",
+      "status": "SOURCE_TESTED",
+      "currentEvidence": "Bounded metadata-only query checks, rejects raw prompts/private owner records, no skill mutation.",
+      "componentOwnedWork": "Finalize output version, access-control adapter and indexed readback consistency.",
+      "exitCriterion": "Authorized reader receives only coded verified records, and unauthorized reader always denied.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-13",
+      "name": "Private owner-scoped University candidate projection",
+      "status": "SOURCE_TESTED",
+      "currentEvidence": "Source read-only candidate-context adapter requires head anchor and owner callback; cannot mint authority.",
+      "componentOwnedWork": "Finalize private output/consent model and exact source provenance for downstream adapter.",
+      "exitCriterion": "Candidate remains CANDIDATE_CONTEXT_ONLY with no ability to issue action or verified lesson.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-14",
+      "name": "Tenant isolation and injection-safe retrieval",
+      "status": "PARTIAL_SOURCE",
+      "currentEvidence": "Tests reject mixed-scope and exclude raw prompt from institutional output; live auth and negative search isolation unqualified.",
+      "componentOwnedWork": "Harden index-side scope filters, no prompt/tool authority, cross-user RAG adversarial test suite.",
+      "exitCriterion": "N-way tenants and hostile retrieved strings never cross scope, issue tools or alter permissions.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-15",
+      "name": "Portable deployment and service discovery",
+      "status": "NOT_IMPLEMENTED",
+      "currentEvidence": "No installed standalone Learning provider/health contract; the historical writer is local Windows-specific.",
+      "componentOwnedWork": "Node22-native capability adapter or authorized Windows-original-writer bridge using runtime configuration, explicit data root, health and readiness.",
+      "exitCriterion": "Install and restart without default E:/ or C:/, outside CI; all routes resolve approved owner-scoped storage.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-16",
+      "name": "Component test suite and cross-platform quality",
+      "status": "PARTIAL_SOURCE",
+      "currentEvidence": "Source Node22 GitHub Actions 92/92 pass, four engineering checkpoints; no independent Windows/Linux end-to-end writer test.",
+      "componentOwnedWork": "Expand fault injection, stable golden vectors, verify full engineering archive and reproducible cross-platform smoke.",
+      "exitCriterion": "Full Learning-only suite including actual storage survives repeat Windows/Linux restarts without mocks.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-17",
+      "name": "Observability, reconcile queue and operator controls",
+      "status": "NOT_IMPLEMENTED",
+      "currentEvidence": "Source has statuses but no live durable queue metrics, provider discovery and scoped operator-safe reconcile UI.",
+      "componentOwnedWork": "Implement read-only health, counts by state, bounded retry, backpressure and dispute quarantine with receipts.",
+      "exitCriterion": "Outages report accurate PENDING/BLOCKED/DISPUTED without false green; repair can resume only after evidence.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    },
+    {
+      "id": "LL-18",
+      "name": "Original-release provenance and rollback",
+      "status": "NOT_IMPLEMENTED",
+      "currentEvidence": "Two stacked source-only drafts and no approved release artifact or installed version pin.",
+      "componentOwnedWork": "Publish reviewed reproducible release with source digest, config contract, immutable migration plan and rollback.",
+      "exitCriterion": "Independent artifact hash, no hidden historical writes, rollback restores service without losing receipts.",
+      "evidenceLevel": "SOURCE_INSPECTION_AND_PRIOR_TESTS_ONLY",
+      "independentlyQualified": false
+    }
+  ],
+  "externalProviderPrerequisites": [
+    {
+      "id": "EXT-01",
+      "owner": "Original Receipt Authority",
+      "contract": "Atomically commit canonical execution receipt plus eligible nonpersonal Learning obligation and supply authenticated readCommittedObligation, verifyAtomicReceiptCommit, listPendingObligationIds and Receipt-owned delivery ACK",
+      "sourceReference": "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/111",
+      "state": "EXTERNAL_NOT_QUALIFIED"
+    },
+    {
+      "id": "EXT-02",
+      "owner": "Independent Veritas",
+      "contract": "Bound issuer cryptographic PRE/POST, privacyCleared and transferEligible with revocation and exact source/context keys",
+      "sourceReference": "https://github.com/4citeB4U/Leeway-Runtime-Fabric/pull/92",
+      "state": "EXTERNAL_NOT_QUALIFIED"
+    },
+    {
+      "id": "EXT-03",
+      "owner": "Canonical Formula and Runtime Fabric",
+      "contract": "True same-request Formula and observed physical execution, provider registry and original end-to-end mission",
+      "sourceReference": "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21",
+      "state": "EXTERNAL_NOT_QUALIFIED"
+    },
+    {
+      "id": "EXT-04",
+      "owner": "LeeWay Standards",
+      "contract": "Versioned original authority registry, approved policy and trust-root enrollment/rollback",
+      "sourceReference": "https://github.com/4citeB4U/LeeWay-Standards/pull/62",
+      "state": "EXTERNAL_NOT_QUALIFIED"
+    },
+    {
+      "id": "EXT-05",
+      "owner": "Continuum / protected host storage",
+      "contract": "Qualified owner-scoped storage and exact byte backup/recovery transport for persistent private candidate data",
+      "sourceReference": "https://github.com/4citeB4U/LeeWay-Continuum",
+      "state": "EXTERNAL_NOT_QUALIFIED"
+    },
+    {
+      "id": "EXT-06",
+      "owner": "Agent University/Skills consumers",
+      "contract": "Read-only independently authorized, privacy-scoped retrieval; no skill execution or policy promotion",
+      "sourceReference": "https://github.com/4citeB4U/LeeWay-Agent-Skills",
+      "state": "EXTERNAL_NOT_QUALIFIED"
+    }
+  ],
+  "integrationEligibility": {
+    "eligible": false,
+    "reason": "LEARNING_OWNED_18_PREINTEGRATION_GATES_NOT_QUALIFIED",
+    "notProofOfLiveService": true,
+    "protectedLedgerMutationPerformed": false,
+    "independentVeritasCertified": false,
+    "productionAdmissionAuthorized": false
+  },
+  "statusSemantics": {
+    "SOURCE_TESTED": "Source module and synthetic tests exist only.",
+    "PARTIAL_SOURCE": "Some source behavior exists; required own component behavior remains incomplete or unverified.",
+    "NOT_IMPLEMENTED": "No verified component implementation/evidence for stated independent gate.",
+    "UNVERIFIED": "No adequate source inspection to classify.",
+    "INDEPENDENTLY_QUALIFIED": "Reserved for separately authenticated real component acceptance, never emitted by this source snapshot."
+  }
+}
