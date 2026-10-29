@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "node --test",
-    "verify:engineering-loop": "node scripts/verify-engineering-loop.mjs"
+    "verify:engineering-loop": "node scripts/verify-engineering-loop.mjs",
+    "assess:independent-readiness": "node src/independent-learning-readiness.mjs"
   },
   "description": "A non-production, owner-scoped experiential candidate vault for LeeWay Learning Ledger"
 }
