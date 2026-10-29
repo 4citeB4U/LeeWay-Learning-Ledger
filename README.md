@@ -47,3 +47,12 @@ A missing, locked or corrupted journal fails closed. Vault creation requires exp
 - Synthetic Node source tests cover receipt/Veritas/Formula correlation, independent provider roles, private-record refusal, concurrent duplicates, failure/denial learning, lost acknowledgments, restarts and query failures. They do **not** exercise production credentials or the original canonical writer on the owner's host.
 
 **Unresolved production dependencies:** Original Receipt Authority must implement the atomic receipt/outbox obligation and durable ACK; the original canonical Learning writer must enforce multi-process unique admission keys; actual independent Veritas and Receipt issuer bindings, live owner-host readback, crash/backup testing and qualified University access remain unverified. [Full contract and live acceptance checklist](docs/C3-CANONICAL-LEARNING-PRODUCTION-INGRESS-20261027.md). Do not confuse draft-source readiness with production certification.
+
+
+## Learning Ledger independent qualification (before integration) — October 28, 2026
+
+**Full component goal and exact workplan:** [Learning Ledger independent component qualification](docs/LEARNING-LEDGER-INDEPENDENT-COMPONENT-QUALIFICATION-20261028.md). **Machine-readable evidence:** [18 owned gates / 6 separately owned dependencies](docs/learning-ledger-independent-readiness.v1.json). Run `npm run assess:independent-readiness` for a read-only, fail-closed source inventory check; `npm test` includes 16 qualification-denial regressions.
+
+**Current observed stage:** The two standalone Learning source PRs #1 and #3 remain draft/unmerged; `main` contains only README. The source previously had 92/92 passing tests and now additionally carries explicit Learning-only readiness tests. The 18 preintegration gates break down into **3 SOURCE_TESTED, 8 PARTIAL_SOURCE, 7 NOT_IMPLEMENTED**, **zero independently host-qualified**. These counts are not percentages or production PASS claims.
+
+**Next acceptance target (Learning only):** original qualified canonical Learning writer and historical custody, atomic cross-worker unique admission and restart readback, owner private KMS/consent/erasure and backup, path-independent service, restricted University projections, crash/fault matrix and reviewed release/rollback. Receipt, Veritas, Formula, Runtime and Continuum remain separate original authorities. Full integrated C3 is a later test and is NOT qualified by this independent assessment.
