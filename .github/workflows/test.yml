@@ -13,5 +13,7 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+      - name: Qualify Learning-only source readiness inventory (never grants production)
+        run: npm run assess:independent-readiness
       - name: Verify canonical engineering loop documentation
         run: npm run verify:engineering-loop
