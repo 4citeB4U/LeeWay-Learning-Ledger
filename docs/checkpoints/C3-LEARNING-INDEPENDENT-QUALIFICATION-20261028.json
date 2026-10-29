@@ -1,0 +1,189 @@
+{
+  "schema": "leeway.engineering.loop.checkpoint.v1",
+  "checkpointId": "C3-LEARNING-INDEPENDENT-QUALIFICATION-20261028",
+  "task": "Establish original Learning Ledger standalone complete functional goal and independently qualified preintegration readiness requirements without claiming cross-authority live production",
+  "parentMission": {
+    "owner": "4citeB4U/Leeway-Runtime-Fabric",
+    "url": "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21",
+    "acceptance": "C3_SAME_REQUEST_VERITAS_RECEIPT_ATOMIC_OUTBOX_LEARNING_READBACK"
+  },
+  "source": {
+    "owner": "4citeB4U/LeeWay-Learning-Ledger",
+    "branch": "review/c3-canonical-learning-inbox-recovery-20261027",
+    "reviewPr": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+    "reviewedCommit": "11e741322109e8716fd06ea5d94e0a38fb8cd805",
+    "scope": "SOURCE_ONLY"
+  },
+  "authority": {
+    "engineeringLaw": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md",
+    "permanentRules": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/standards/PERMANENT-ENGINEERING-RULES.md",
+    "contributorProtocol": "https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/docs/CONTRIBUTOR-HANDOFF-PROTOCOL.md"
+  },
+  "classification": "PARTIALLY_BUILT",
+  "acceptance": {
+    "source": {
+      "status": "CI_PASS",
+      "workflowRun": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40794811830",
+      "testsPass": 108,
+      "testsFail": 0,
+      "testsSkipped": 0
+    },
+    "deployment": "NOT_DEPLOYED",
+    "liveOwnerHost": "NOT_OBSERVED",
+    "veritas": "NOT_OBSERVED",
+    "canonicalReceipt": "NOT_CREATED",
+    "canonicalLearning": "NOT_ADMITTED",
+    "production": "BLOCKED"
+  },
+  "scopeAndSafeguards": {
+    "preserved": [
+      "Original Learning writer and historical 133-event anchored prefix",
+      "Parent Learning PR #1 and original source-owned candidate vault",
+      "Existing Receipt Authority, independent Veritas issuer, Formula and Runtime Fabric",
+      "Four previously documented distinct ten-stage source cycles",
+      "Original C3 parent mission #21 and existing independent Learning issue #2"
+    ],
+    "changed": [
+      "docs/learning-ledger-independent-readiness.v1.json",
+      "docs/LEARNING-LEDGER-INDEPENDENT-COMPONENT-QUALIFICATION-20261028.md",
+      "src/independent-learning-readiness.mjs",
+      "test/independent-learning-readiness.test.mjs",
+      "package.json",
+      "CI source-only independent readiness assessment and this checkpoint"
+    ],
+    "rollback": "Close/revert only Learning Ledger draft PR #3 additions. Do not touch original protected Learning or Receipt histories, original runtime, private owner keys or independent Veritas roots.",
+    "exactBlocker": "Eighteen distinct Learning-owned independent preintegration gates: 3 SOURCE_TESTED, 8 PARTIAL_SOURCE, 7 NOT_IMPLEMENTED; the original canonical writer, unique index, crash/readback, private KMS and portable deployment remain unqualified. Separate upstream Veritas and Receipt owners also unqualified for integrated production."
+  },
+  "loop": [
+    {
+      "phase": "Investigate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Read exact Learning Ledger main README-only state, draft PRs #1/#3, 92/92 source results, original Runtime narrow GPU-only writer, constitutional Skills Ledger law, historical 133-event custody and original C3 mission.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21"
+      ]
+    },
+    {
+      "phase": "Diagnose",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Found owner lacks a clear measurable standalone Learning qualification milestone: a tested source contract is conflated with original canonical writer, real owner security, portable startup and trustworthy independent readiness.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/issues/2",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1"
+      ]
+    },
+    {
+      "phase": "Plan",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Separated the full Learning goal into institutional and private lanes, defined eighteen Learning-owned isolated gates with independent physical exit tests, six external provider prerequisites and four owner-only workstreams; prohibit fake percent completion.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/LeeWay-Standards/pull/62"
+      ]
+    },
+    {
+      "phase": "Implement",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Added machine-readable preintegration snapshot and detailed full functional/owned workplan; fail-closed source verifier, sixteen new tests, explicit CLI and CI source readiness report. No new writer or runtime issuer created.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/f792f4909eaa0eaceece484c8ebfa248e5daf341",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/8a616721077a9260f2efce38c1faad1638540bce"
+      ]
+    },
+    {
+      "phase": "Test",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Source Node22 test run confirmed all 108 tests PASS including new source-readiness refusal tests for fake production PASS, missing original roles, removed owned gates, altered source SHA and fabricated external issuer.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40794811830"
+      ]
+    },
+    {
+      "phase": "Validate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Compared source inventory to original coded boundaries and unmerged state; source 3 tested, 8 partial and 7 not implemented, none independently host-qualified; external six prerequisites separately tracked.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/111"
+      ]
+    },
+    {
+      "phase": "Repair",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Strengthened original source-only readiness boundary with explicit NO PASS on missing authentic host evidence, external issuer authority, documentation-only source status and absent original writer. No live failure or repair claimed.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/eaec98c2fb1489e44bf8e1f9d2f7aa3c1c1913b6",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/8a616721077a9260f2efce38c1faad1638540bce"
+      ]
+    },
+    {
+      "phase": "Retest",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Original source-suite and added 16-negative readiness suite completed 108/108 PASS, zero fail/skip; new CLI and full workflow rerun do not claim physical writer verification.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40794811830",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3"
+      ]
+    },
+    {
+      "phase": "Verify",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Verified GitHub CI run log and original four checkpoint archive; readiness check is a source audit, NOT independent Veritas live certificate, installed Learning writer admission or protected private-data restore.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40794811830",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3"
+      ]
+    },
+    {
+      "phase": "Evidence",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Preserve this exact source-goal-and-readiness checkpoint as fifth independently documented cycle with 18 component acceptance requirements, six external provider boundaries, explicit STOP and no fabricated receipts.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/3",
+        "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21"
+      ]
+    }
+  ],
+  "learningCandidate": {
+    "kind": "ENGINEERING_EXPERIENCE_CANDIDATE",
+    "truthBoundary": "SOURCE_ONLY_NOT_CANONICAL_LEARNING",
+    "finding": "A source-level service contract and passing synthetic tests are insufficient to claim an independently deployable Learning Ledger. Original canonical writer uniqueness, encryption key lifecycle, recovery and historical custody must pass physical isolated component testing first.",
+    "recoveryPattern": "Separate the Learning-owned eighteen preintegration gates from six externally owned provider interfaces, track their evidenced status without false percentages, and keep integration blocked until original writer and private vault pass real restart, concurrency, scope and rollback tests.",
+    "transferableTo": [
+      "Original Learning Ledger operator qualification checklist",
+      "Original LeeWay Agent University source engineering candidate index",
+      "LeeWay Standards SH-01 independent workstream planning"
+    ],
+    "promoteAutomatically": false,
+    "privacy": "PUBLIC_NON_PERSONAL_SOURCE_EVIDENCE_ONLY",
+    "contradictionHandling": "Actual authenticated host results supersede candidate source interpretation through new recorded evidence. Preserve all historical source assessments and do not rewrite protected receipts."
+  },
+  "blockers": [
+    {
+      "code": "CANONICAL_LEARNING_WRITER_INDEPENDENT_TEST_OPEN",
+      "owner": "Learning Ledger canonical writer custodian",
+      "next": "Bind the original writer and prove unique durable admission index, 64-client concurrency and exact historical journal readback"
+    },
+    {
+      "code": "LEARNING_PRIVATE_KEY_AND_CONSENT_OPEN",
+      "owner": "Learning Ledger owner-private Memory Security",
+      "next": "Qualify real owner key management, retention/erasure/export, multi-owner scope, consent, backup and restore"
+    },
+    {
+      "code": "LEARNING_PORTABLE_DEPLOYMENT_OPEN",
+      "owner": "Learning Ledger source and runtime provider maintainers",
+      "next": "Package path-independent startup, identity and health, install/test original writer on isolated host and verify rollback"
+    },
+    {
+      "code": "ORIGINAL_RECEIPT_ATOMIC_OUTBOX_OPEN",
+      "owner": "External Receipt Authority",
+      "next": "Independent real atomic original receipt learning obligation and ACK qualification outside Learning code"
+    },
+    {
+      "code": "INDEPENDENT_VERITAS_PRE_POST_NOT_ENROLLED",
+      "owner": "External independent Veritas",
+      "next": "Qualify actual separate signer trust root, real PRE POST and privacy transfer clearance without modifying Learning writer"
+    }
+  ]
+}
