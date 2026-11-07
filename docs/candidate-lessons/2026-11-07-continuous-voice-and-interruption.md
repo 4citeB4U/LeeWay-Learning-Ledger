@@ -22,7 +22,7 @@ LICENSE = MIT, per existing LeeWay Learning Ledger README source header.
 - [LeeWay Standards laws](https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md) and permanent R01–R25.
 - [Agent Skills OG Expressive Identity](https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/skills/leeway-og-expressive-identity/SKILL.md), [Human Conversation](https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/skills/leeway-human-conversation/SKILL.md), [Agent Operating Loop](https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/skills/leeway-agent-operating-loop/SKILL.md) and [Learning Ledger Skill](https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/skills/leeway-learning-ledger/SKILL.md).
 - [LL-01 existing Learning Ledger completion issue #4](https://github.com/4citeB4U/LeeWay-Learning-Ledger/issues/4), existing Runtime Fabric C3 #21, and the original private Receipt Authority + independent Veritas owners.
-- [Existing outside contributor project checkpoint](https://github.com/4citeB4U/LeeWay-Engineering/blob/creator/external-assistant-admission-20261107/docs/EXTERNAL-ASSISTANT-MISSION-CHECKPOINT.md), whose mission is to build outside-assistant Markdown contracts for Gemini, OpenAI/ChatGPT, Codex and Antigravity without impersonating Agent Lee.
+- [Existing outside contributor project checkpoint](https://github.com/4citeB4U/LeeWay-Engineering/blob/main/docs/EXTERNAL-ASSISTANT-MISSION-CHECKPOINT.md), whose mission is to build outside-assistant Markdown contracts for Gemini, OpenAI/ChatGPT, Codex and Antigravity without impersonating Agent Lee.
 
 ## Experience arc (generalized source case)
 
