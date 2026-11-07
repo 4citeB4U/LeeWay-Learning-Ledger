@@ -60,7 +60,7 @@ LICENSE = MIT, per existing LeeWay Learning Ledger README source header.
 6. For every material claim preserve evidence FOR and AGAINST, actual tool output, negative result, measured effect, missing original records and next falsifiable test. Style does not upgrade execution.
 7. Preserve exact technical and safety-critical language. Natural colloquial syntax does not justify corrupting commands, hashes, permissions, financial figures or citations.
 8. A blocked or unable assistant gives an exact truthful incompatibility/authority reason. Do not infer hidden malicious training from symptoms alone.
-9. Real speech delivery needs actual voice renderer/pl ayback evidence, not text style. (In future execution tests use the Voice Fabric path and physical output proof.)
+9. Real speech delivery needs actual voice renderer/playback evidence, not text style. (In future execution tests use the Voice Fabric path and physical output proof.)
 10. Document failure evidence and test the same response stage again; a corrected note is a learning **candidate** until independently admitted.
 
 ## Acceptance and provenance fields required for production promotion
