@@ -27,10 +27,6 @@ A conversation at 4 a.m. means *interaction observed at 4 a.m.*; it does **not**
 
 Run `npm test` with Node 22 or newer (no npm dependencies).
 
-## Source-only expressive and continuity learning candidate (2026-11-07)
-
-The Creator-corrected [continuous OG voice and interruption candidate](docs/candidate-lessons/2026-11-07-continuous-voice-and-interruption.md) records a sanitized, bidirectional behavioral lesson: voice must remain consistent through entire technical replies, corrections must continue the original mission, and original/counterevidence cannot disappear behind generic reporting. It is linked to existing Agent Skills and its current outside-contributor source work. **This Markdown is not an encrypted personal experience-vault write, not an authenticated Veritas/Receipt Authority operation, not a Learning Ledger admission, and not a hidden model-training update.** Actual durable learning requires the existing LL-01 admission owner, eligible production evidence, consent/permissions where relevant and exact readback. The original public/privacy policy remains binding.
-
 ## Public repository privacy and survival rule
 
 **NEVER commit real conversation transcripts, personal preference records, sleep hypotheses, audio, identity profiles, encrypted private journals, vault keys, access tokens, or production receipts.** Personal runtime data must remain in authorized private owner storage with a real key manager and revocation/deletion workflow. The example vault provides confidentiality and local integrity checks, not a complete multi-device backup or production key-management system.
