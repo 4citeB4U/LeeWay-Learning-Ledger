@@ -1,0 +1,180 @@
+{
+  "schema": "leeway.engineering.loop.checkpoint.v1",
+  "checkpointId": "C3-ENGINEERING-EVIDENCE-CLOSURE-20261027",
+  "task": "Capture missing engineering-loop proof, reuse Standards PR #24, and make archival evidence visible to University/Agent Skills",
+  "parentMission": {
+    "owner": "4citeB4U/Leeway-Runtime-Fabric",
+    "url": "https://github.com/4citeB4U/Leeway-Runtime-Fabric/issues/21",
+    "acceptance": "C3 SAME_REQUEST_VERITAS_RECEIPT_LEARNING_ADMISSION"
+  },
+  "source": {
+    "owner": "4citeB4U/LeeWay-Learning-Ledger",
+    "branch": "feat/experiential-growth-foundation-v1",
+    "reviewPr": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1",
+    "reviewedCommit": "c9f20191ec492a243750a14dbaaee76e083eacc2",
+    "scope": "SOURCE_ONLY"
+  },
+  "authority": {
+    "engineeringLaw": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md",
+    "permanentRules": "https://github.com/4citeB4U/LeeWay-Standards/blob/main/standards/PERMANENT-ENGINEERING-RULES.md",
+    "contributorProtocol": "https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/docs/CONTRIBUTOR-HANDOFF-PROTOCOL.md"
+  },
+  "classification": "MISSING_GLUE",
+  "acceptance": {
+    "source": {
+      "status": "CI_PASS",
+      "workflowRun": "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40595474477",
+      "testsPass": 30,
+      "testsFail": 0,
+      "testsSkipped": 0
+    },
+    "deployment": "NOT_DEPLOYED",
+    "liveOwnerHost": "NOT_OBSERVED",
+    "veritas": "NOT_OBSERVED",
+    "canonicalReceipt": "NOT_CREATED",
+    "canonicalLearning": "NOT_ADMITTED",
+    "production": "BLOCKED"
+  },
+  "scopeAndSafeguards": {
+    "preserved": [
+      "Canonical LeeWay Standards PR #24 evaluator authority",
+      "Existing Runtime Fabric, independent Veritas and Receipt Ledger",
+      "Existing Learning Ledger source-only development branch and private event vault",
+      "Agent Skills governance and University registry ownership"
+    ],
+    "changed": [
+      "docs/checkpoints/C3-LEARNING-CUSTODY-SOURCE-20261027.json",
+      "src/engineering-loop-evidence.mjs",
+      "scripts/verify-engineering-loop.mjs",
+      "test/engineering-loop-evidence.test.mjs",
+      "src/standards-checkpoint-handoff.mjs",
+      "test/standards-checkpoint-handoff.test.mjs",
+      "docs/ENGINEERING-LOOP-EVIDENCE.md",
+      "docs/STANDARDS-ENGINEERING-HANDOFF.md",
+      ".github/workflows/test.yml",
+      "package.json"
+    ],
+    "rollback": "All changes remain in draft PR #1; restore branch from pre-change commit 3c83045d51ea7592f37623971fa412aa58918ba8 through reviewed revert. No live host mutation or historical ledger rollback attempted.",
+    "exactBlocker": "Standards evaluator PR #24 remains draft; no trusted Runtime Fabric binding or live PRE/POST Veritas/Receipt/Learning Ledger evidence was available for production promotion."
+  },
+  "loop": [
+    {
+      "phase": "Investigate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Read canonical LeeWay Engineering Laws 05/07/09/11/12 and Agent Skills Contributor Handoff. Then inspected current Agent Skills hub and found Standards PR #24 in parallel.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md",
+        "https://github.com/4citeB4U/LeeWay-Agent-Skills/issues/22"
+      ]
+    },
+    {
+      "phase": "Diagnose",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Source CI successes were dispersed across PR/commits without a ten-stage evidence chain; later peer discovery exposed a risk of a competing checkpoint evaluator.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1",
+        "https://github.com/4citeB4U/LeeWay-Standards/pull/24"
+      ]
+    },
+    {
+      "phase": "Plan",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Keep existing owner PR; archive the source experience as a candidate with precise stages, then delegate real qualification to existing Standards evaluator, not a new ledger authority.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/docs/CONTRIBUTOR-HANDOFF-PROTOCOL.md",
+        "https://github.com/4citeB4U/LeeWay-Standards/pull/24"
+      ]
+    },
+    {
+      "phase": "Implement",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Created machine-readable original C3 checkpoint, local source-record checker, candidate University projection, documentation workflow CI gate and Standards PR #24-bound fail-closed adapter.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/841afab60b654ed20794145d8d62e8caf16d7e05",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/54e029bec73c811545ccf5aa2c394301bec45734"
+      ]
+    },
+    {
+      "phase": "Test",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Source CI verified documentary schema, missing/reordered-stage refusals, forged Veritas claims, stale evidence and candidate-only knowledge state with no production calls.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40594847854"
+      ]
+    },
+    {
+      "phase": "Validate",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Confirmed Standards PR #24 has canonical evaluateEngineeringLoopCheckpoint requiring stage hashes, qualification and Veritas/Receipt truth; local source checker only tests archival completeness.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Standards/pull/24",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/blob/feat/experiential-growth-foundation-v1/docs/STANDARDS-ENGINEERING-HANDOFF.md"
+      ]
+    },
+    {
+      "phase": "Repair",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "After reading Agent Skills hub issue #22, added a bound Standards callback adapter and new negative tests to avoid competing production checkpoint authority.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/54e029bec73c811545ccf5aa2c394301bec45734",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/50b5073cca99812fa9d42831dd9c208583c0a541"
+      ]
+    },
+    {
+      "phase": "Retest",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Re-ran Node 22 PR workflow after the cross-team Standards handoff correction, recording 30 passing tests and no failures or skips.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40595474477"
+      ]
+    },
+    {
+      "phase": "Verify",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Read back final CI at source commit c9f20191 and confirmed 30/30 test pass and source engineering document gate; no independently signed operational evidence observed.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/commit/c9f20191ec492a243750a14dbaaee76e083eacc2",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/actions/runs/40595474477"
+      ]
+    },
+    {
+      "phase": "Evidence",
+      "status": "EVIDENCED_SOURCE",
+      "observation": "Archived per-stage evidence and next gate in owning PR and documented canonical Standards PR #24 authority. This remains a source-only candidate and not an official receipt.",
+      "evidence": [
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/pull/1",
+        "https://github.com/4citeB4U/LeeWay-Learning-Ledger/blob/feat/experiential-growth-foundation-v1/docs/ENGINEERING-LOOP-EVIDENCE.md"
+      ]
+    }
+  ],
+  "learningCandidate": {
+    "kind": "ENGINEERING_EXPERIENCE_CANDIDATE",
+    "truthBoundary": "SOURCE_ONLY_NOT_CANONICAL_LEARNING",
+    "finding": "Development work can pass source CI yet fail institutional advancement when ten-stage evidence and peer-owned Standards qualifications are not linked.",
+    "recoveryPattern": "Create an owning-PR checkpoint with each exact stage, real source/CI proof, precise blocked gate, reusable finding and Standards PR #24 handoff; promote only with independent Veritas and receipt admission.",
+    "transferableTo": [
+      "Agent University evidence index",
+      "Agent Skills operating loop / contributor coordination"
+    ],
+    "promoteAutomatically": false,
+    "privacy": "PUBLIC_NON_PERSONAL_SOURCE_EVIDENCE_ONLY",
+    "contradictionHandling": "When another team provides a canonical qualified implementation, keep the prior candidate and record its corrected integration ownership instead of rewriting history."
+  },
+  "blockers": [
+    {
+      "code": "STANDARDS_PR24_UNMERGED",
+      "owner": "LeeWay Standards",
+      "next": "Complete reviewed PR #24 qualification and source pin before runtime binding"
+    },
+    {
+      "code": "RUNTIME_VERITAS_UNBOUND",
+      "owner": "Runtime Fabric / independent Veritas",
+      "next": "Provide an authorized independently verified request-specific PRE/POST and receipt provider"
+    },
+    {
+      "code": "CANONICAL_LEARNING_UNADMITTED",
+      "owner": "Learning Ledger/Runtime Fabric",
+      "next": "Use existing canonical writer and durable same-request readback after independent verification"
+    }
+  ]
+}

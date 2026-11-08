@@ -1,0 +1,10 @@
+node_modules/
+.local/
+*.jsonl
+*.jsonl.lock
+*.key
+*.pem
+*.sqlite
+*.sqlite-*
+coverage/
+.DS_Store
