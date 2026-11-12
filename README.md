@@ -9,6 +9,16 @@ Support individual and collective agents learning from attempts, unexpected resu
 
 A conversation at 4 a.m. means *interaction observed at 4 a.m.*; it does **not** prove wake time, sleep time, fatigue or psychological state. Absence of messages proves none of these things. Temporal patterns are candidate hypotheses, and should remain adjustable by the user.
 
+## Mandatory first / second / last learning authority discovery
+
+**FIRST:** the approved [LeeWay Standards](https://github.com/4citeB4U/LeeWay-Standards/blob/main/Docs/governance/LEEWAY-CANONICAL-ENGINEERING-LAWS.md) and Book 59, followed by root [AGENTS.md](AGENTS.md) and the current owning mission/role grants.
+
+**SECOND:** [Ordered Learning Authority Contract](docs/ORDERED-LEARNING-AUTHORITY-CONTRACT.md), the existing [Agent Skills Learning Ledger skill](https://github.com/4citeB4U/LeeWay-Agent-Skills/blob/main/skills/leeway-learning-ledger/SKILL.md), original Machine Consciousness employee policy, and Digital Workforce assessment contract. Distinguish permission to read, capture, practice in isolation, practice live, evaluate, propose admission, admit and deploy.
+
+**LAST:** the original [Runtime C3 learning admission boundary](https://github.com/4citeB4U/Leeway-Runtime-Fabric/blob/main/automation-runtime/c3-learning-admission-boundary.mjs), actual authorized Receipt Authority/Continuum readback, independent reviewer decision and owning mission checkpoint. Never infer a durable learning result from passing source tests.
+
+The source-only stage checker [src/learning-stage-conformance.mjs](src/learning-stage-conformance.mjs) validates learning stage and permission obligations in tests; it **does not** grant real permissions, call a model trainer, or write the canonical Learning Ledger.
+
 ## Existing authority — reuse, do not duplicate
 
 - Creator/Human Authority and [LeeWay Standards Book 59](https://github.com/4citeB4U/Leeway-Runtime-Fabric/blob/main/standards/standards/BOOK-59-SKILL-DEVELOPMENT-LEDGER-LAW.md)

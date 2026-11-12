@@ -1,0 +1,28 @@
+# LEEWAY HEADER — DO NOT REMOVE
+# REGION: LEEWAY.LEARNING.CI
+# TAG: LEEWAY.LEARNING.ORDERED_AUTHORITY_CI.V1
+# DISCOVERY_PIPELINE: Voice → Intent → Location → Vertical → Ranking → Render
+# 5WH:
+# WHAT = Run learning authority order and denial conformance tests in the owning repo.
+# WHY = Block unsafe stage skipping and self-issued durable learning in source changes.
+# WHO = Original Learning Ledger source owner and GitHub CI.
+# WHERE = .github/workflows/ordered-learning-authority.yml.
+# WHEN = 2026-11-12.
+# HOW = Read-only Node unit tests and tracked-source visibility.
+# LICENSE: Existing repo terms remain unchanged.
+name: LeeWay Ordered Learning Authority
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  learning-stage-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test test/learning-stage-conformance.test.mjs
