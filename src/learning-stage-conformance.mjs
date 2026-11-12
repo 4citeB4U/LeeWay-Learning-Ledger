@@ -42,7 +42,13 @@ export function evaluateLearningTransition(unit = {}, proposedStage, context = {
     return denied('LEARNING_PROVENANCE_INCOMPLETE');
   }
   const currentIndex = unit.stage ? STAGES.indexOf(unit.stage) : -1;
-  if ((unit.stage && currentIndex < 0) || targetIndex !== currentIndex + 1)
+  // A documented, owner-reviewed sandbox-only case may skip the real-device
+  // actuation stage, but it remains candidate learning and cannot satisfy
+  // the actual execution / independent receipt gate at LG-07.
+  const sandboxOnlyJump = unit.stage === 'LG-04' && proposedStage === 'LG-06' &&
+    context.sandboxOnly === true && context.liveGateNAApproved === true;
+  if ((unit.stage && currentIndex < 0) ||
+      (targetIndex !== currentIndex + 1 && !sandboxOnlyJump))
     return denied('LEARNING_ORDER_VIOLATION');
   if (context.hostVerified !== true || context.issuerTrusted !== true ||
       !valid(context.grantReference)) return denied('LEARNING_AUTHORITY_UNBOUND');
